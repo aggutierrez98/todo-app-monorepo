@@ -3,11 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --emptyOutDir",
     "serve": "vite preview",
-    "lint": "eslint . --fix",
-    "prettier": "prettier . --write",
-    "prepare": "husky install",
+    "build": "vite build --emptyOutDir",
     "cypress:open": "cypress open",
     "test:e2e": "cypress run"
   },
@@ -30,8 +27,5 @@
     "tailwindcss": "^2.2.19",
     "vite": "^2.6.4"
   },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
-  }
+  "proxy": "http://localhost:8080/api/"
 }

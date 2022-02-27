@@ -7,8 +7,14 @@
     "api",
     "app"
   ],
+  "engines": {
+    "npm": "8.3.1"
+  },
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./api ./app --fix",
+    "prettier": "prettier .api .app --write",
+    "prepare": "husky install",
     "build": "npm run build --workspace=app",
     "start": "npm run start --workspace=api",
     "dev:api": "npm run build && npm run dev --workspace=api"
@@ -27,5 +33,9 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.3"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }
