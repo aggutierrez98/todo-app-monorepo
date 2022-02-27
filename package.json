@@ -12,8 +12,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./api ./app --fix",
-    "prettier": "prettier .api .app --write",
+    "lint": "eslint . --fix",
+    "prettier": "prettier --write .",
     "prepare": "husky install",
     "build": "npm run build --workspace=app",
     "start": "npm run start --workspace=api",

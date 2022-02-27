@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 
-// const baseUrl = import.meta.env.VITE_API_URL;
 const baseUrl = "../api/";
 
 export const getTodos = async (userId, limit, pageParam) => {

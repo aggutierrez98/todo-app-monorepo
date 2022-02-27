@@ -12,7 +12,6 @@ module.exports = {
   },
   extends: [
     "plugin:cypress/recommended",
-    // "cypress",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "prettier",
@@ -44,5 +43,5 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: ["build"],
+  ignorePatterns: ["./app/build"],
 };
