@@ -1,0 +1,37 @@
+{
+  "name": "tailwind-vite",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "serve": "vite preview",
+    "lint": "eslint . --fix",
+    "prettier": "prettier . --write",
+    "prepare": "husky install",
+    "cypress:open": "cypress open",
+    "test:e2e": "cypress run"
+  },
+  "dependencies": {
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.24.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-error-boundary": "^3.1.4",
+    "react-hook-form": "^7.22.1",
+    "react-modal": "^3.14.4",
+    "react-query": "^3.34.3",
+    "react-router-dom": "^5.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^1.1.0",
+    "autoprefixer": "^10.4.0",
+    "cypress": "^9.2.0",
+    "postcss": "^8.4.4",
+    "tailwindcss": "^2.2.19",
+    "vite": "^2.6.4"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
+}
