@@ -27,7 +27,7 @@ export default defineConfig({
       "@h": path.resolve(__dirname, "./src/hooks"),
     },
   },
-  server: {
-    open: true,
-  },
+  // server: {
+  //   open: true,
+  // },
 });

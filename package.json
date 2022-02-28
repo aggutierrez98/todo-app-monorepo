@@ -15,16 +15,18 @@
     "lint": "eslint ./api ./app --fix",
     "prettier": "prettier --write .",
     "prepare": "husky install",
+    "dev:api": "npm run build && npm run dev --workspace=api",
     "build": "npm run build --workspace=app",
     "start": "npm run start --workspace=api",
     "cypress": "npm run cypress:open --workspace=app",
-    "test": "npm run test:e2e --workspace=app",
-    "dev:api": "npm run build && npm run dev --workspace=api"
+    "start-test": "concurrently 'npm run test --workspace=api' 'npm run dev --workspace=app' ",
+    "test:e2e": "npm run test:e2e --workspace=app"
   },
   "keywords": [],
   "author": "Agustin Manuel Gutierrez",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^7.0.0",
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-cypress": "^2.12.1",
@@ -34,7 +36,8 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.1.3",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "start-server-and-test": "^1.14.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",

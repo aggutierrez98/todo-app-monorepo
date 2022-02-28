@@ -110,10 +110,10 @@ describe("TodosPage", () => {
       });
 
       it("Todo can be done", () => {
-        cy.get("li[title='Do todo']").click().as("theTodo");
+        cy.get("div[title='Do todo']").click().as("theTodo");
         cy.get("@theTodo").should(
           "have.class",
-          "dark:bg-gray-400 bg-gray-400 transition-all ease"
+          "dark:bg-gray-400 bg-gray-400 transition-all"
         );
       });
 
@@ -122,10 +122,10 @@ describe("TodosPage", () => {
           cy.doTodo(id);
         });
 
-        cy.get("li[title='Undo todo']").click().as("theTodo");
+        cy.get("div[title='Undo todo']").click().as("theTodo");
         cy.get("@theTodo").should(
           "not.have.class",
-          "dark:bg-gray-400 bg-gray-400 transition-all ease"
+          "dark:bg-gray-400 bg-gray-400 transition-all"
         );
       });
 

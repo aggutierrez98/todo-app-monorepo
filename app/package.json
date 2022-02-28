@@ -6,7 +6,7 @@
     "serve": "vite preview",
     "build": "vite build --emptyOutDir",
     "cypress:open": "cypress open",
-    "test:e2e": "cypress run"
+    "test:e2e": "npx cypress run"
   },
   "dependencies": {
     "@material-ui/icons": "^4.11.2",

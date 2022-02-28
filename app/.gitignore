@@ -4,4 +4,7 @@ dist-ssr
 *.local
 .env.*
 build
-cypress/videos/**
+cypress/videos
+cypress/screenshots
+cypress/downloads
+cypress/plugins

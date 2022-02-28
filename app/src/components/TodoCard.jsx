@@ -34,8 +34,9 @@ export const TodoCard = ({ info }) => {
 
   return (
     <>
-      <li title={`${info?.done ? "Undo" : "Do"} todo`}>
+      <li>
         <div
+          title={`${info?.done ? "Undo" : "Do"} todo`}
           className={`flex justify-between items-center shadow-sh pl-3 p-2 sm:p-3 m-2 sm:text-xl rounded-sm animate-fadeIn animate-fadeOut dark:bg-gray-600 
           dark:text-white cursor-pointer ${
             info?.done ? "dark:bg-gray-400 bg-gray-400 transition-all" : ""
