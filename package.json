@@ -15,12 +15,12 @@
     "lint": "eslint ./api ./app --fix",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "dev:api": "npm run build && npm run dev --workspace=api",
-    "build": "npm run build --workspace=app",
-    "start": "npm run start --workspace=api",
-    "cypress": "npm run cypress:open --workspace=app",
-    "start-test": "concurrently 'npm run test --workspace=api' 'npm run dev --workspace=app' ",
-    "test:e2e": "npm run test:e2e --workspace=app"
+    "dev:api": "npm run build && npm run dev -w api",
+    "build": "npm run build -w app",
+    "start": "npm run start -w api",
+    "cypress": "npm run cypress:open -w app",
+    "start-test": "concurrently 'npm run test -w api' 'npm run dev -w app' ",
+    "test:e2e": "npm run test:e2e -w app"
   },
   "keywords": [],
   "author": "Agustin Manuel Gutierrez",
