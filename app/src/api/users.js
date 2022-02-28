@@ -2,7 +2,7 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const baseUrl = "../api/";
+const baseUrl = import.meta.env.DEV ? import.meta.env.VITE_API_URL : "../api/";
 
 export const registerUser = async (userData) =>
   axios.post(baseUrl + "users", userData);

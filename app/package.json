@@ -26,6 +26,5 @@
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19",
     "vite": "^2.6.4"
-  },
-  "proxy": "http://localhost:8080/api/"
+  }
 }

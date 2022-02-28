@@ -11,8 +11,11 @@ module.exports = {
     node: true,
   },
   extends: [
+    "eslint:recommended",
     "plugin:cypress/recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:react/jsx-runtime",
     "prettier",
   ],
@@ -28,20 +31,26 @@ module.exports = {
     "react/jsx-uses-vars": RULES.ERROR,
     "smart-tabs": RULES.OFF,
     "react/prop-types": RULES.OFF,
+    "no-unused-vars": [RULES.WARN, { ignoreRestSiblings: true }],
     "no-warning-comments": [
-      0,
+      RULES.OFF,
       {
         terms: ["todo", "fixme", "xxx"],
         location: "start",
       },
     ],
     "capitalized-comments": [
-      0,
+      RULES.OFF,
       {
         ignorePattern: "pragma|ignored",
         ignoreInlineComments: true,
       },
     ],
   },
-  ignorePatterns: ["./app/build"],
+  ignorePatterns: ["build"],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };

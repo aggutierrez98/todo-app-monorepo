@@ -119,7 +119,7 @@ export const LoginPage = ({ location }) => {
             Login
           </button>
           <div className="self-start flex text-[18px] mt-8">
-            <p>Don't have account?</p>
+            <p>Dont have account?</p>
             <Link
               className="ml-2 underline dark:text-blue-400 text-blue-600 mb-8"
               to="/register"

@@ -5,19 +5,6 @@ import { Link } from "react-router-dom";
 const emailPattern =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-// getValues,
-
-// useEffect(() => {
-//   if (isSuccess) {
-//     setTimeout(() => {
-//       history.push({
-//         pathname: "/login",
-//         state: { email: getValues("email") },
-//       });
-//     }, 1000);
-//   }
-// }, [isSuccess]);
-
 export const RegisterPage = () => {
   const {
     register,
@@ -30,15 +17,6 @@ export const RegisterPage = () => {
   const onSubmit = async (user) => {
     registerUser(user);
   };
-
-  // useEffect(() => {
-  //   if (isError) {
-  //     setError("email", {
-  //       type: "credentials",
-  //       message: "Email already exists",
-  //     });
-  //   }
-  // }, [isError]);
 
   return (
     <div

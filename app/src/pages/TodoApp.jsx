@@ -21,9 +21,17 @@ function TodoApp() {
             className="2xl:p-2 absolute p-2 w-15 h-15 left-28 sm:left-16 2xl:-left-2 bg-green-400 rounded-full cursor-pointer hover:text-reen-400 transition-all dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-400"
           >
             {themeState ? (
-              <img src={lightMode} className="p-0 w-7 sm:w-10 2xl:w-12" />
+              <img
+                src={lightMode}
+                alt="toogle-light"
+                className="p-0 w-7 sm:w-10 2xl:w-12"
+              />
             ) : (
-              <img src={darkMode} className="p-0 w-7 sm:w-10 2xl:w-12" />
+              <img
+                src={darkMode}
+                alt="toogle-dark"
+                className="p-0 w-7 sm:w-10 2xl:w-12"
+              />
             )}
           </button>
           <h1 className="text-4xl ml-10 font-bold text-green-600 sm:text-5xl 2xl:text-7xl  dark:text-green-400">
