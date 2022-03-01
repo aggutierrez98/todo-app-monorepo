@@ -7,6 +7,10 @@ on:
     branches: [main]
     types: [opened, synchronize]
 
+env:
+  MONGODB_TEST_CNN: ${{ secrets.MONGODB_TEST_CNN }}
+  SECRETORPRIVATEKEY: ${{ secrets.SECRETORPRIVATEKEY }}
+
 jobs:
   avoid_reduncy:
     runs-on: ubuntu-18.04
