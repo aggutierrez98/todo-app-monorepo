@@ -26,8 +26,9 @@ jobs:
         with:
           cache: npm
           node-version: "14"
+          # cache-dependency-path: ./app/package-lock.json
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
   lint:
     needs: install
@@ -71,9 +72,6 @@ jobs:
   e2e:
     needs: [lint, build]
     runs-on: ubuntu-18.04
-    # defaults:
-    #   run:
-    #     working-directory: ./app
     steps:
       - uses: actions/checkout@v2
         with:
@@ -83,16 +81,16 @@ jobs:
           cache: npm
           node-version: "14"
       - name: Install dependencies
-        run: npm ci
+        run: install
       - uses: actions/download-artifact@v2
         with:
           name: build
           path: build
-      - name: Install dotenv
-        run: npm install dotenv
+      # - name: Install dotenv
+      #   run: npm install dotenv
       - name: Prepare E2E Tests
         working-directory: ./api
-        run: npm run test
+        run: npm run test &
       - name: E2E Tests
         uses: cypress-io/github-action@v2
         with:
