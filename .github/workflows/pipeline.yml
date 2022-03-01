@@ -110,7 +110,7 @@ jobs:
           working-directory: ./app
           command: npm run test:e2e
           # start: npm run start-test
-          wait-on: http://localhost:8080
+          # wait-on: http://localhost:8080
 
   deploy:
     needs: [e2e]
