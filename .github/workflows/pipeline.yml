@@ -40,10 +40,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # - uses: actions/cache@v1
-      #   with:
-      #     path: node_modules
-
   lint:
     needs: install
     runs-on: ubuntu-18.04
@@ -93,11 +89,11 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          # cache: npm
+          cache: npm
           node-version: "16"
       - name: Install dependencies
         working-directory: ./api
-        run: npm install --dotenv-extended
+        run: npm install
 
       - uses: actions/download-artifact@v2
         with:
