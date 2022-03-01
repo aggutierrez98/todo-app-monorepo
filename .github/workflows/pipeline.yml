@@ -93,7 +93,7 @@ jobs:
           node-version: "14"
       - name: Install dependencies
         working-directory: ./api
-        run: npm install
+        run: npm install --dotenv-extended
 
       - uses: actions/download-artifact@v2
         with:
