@@ -19,7 +19,7 @@
     "build": "npm run build -w app",
     "start": "npm run start -w api",
     "cypress": "npm run cypress:open -w app",
-    "start-test": "concurrently 'npm run test -w api' 'npm run dev -w app' ",
+    "start-test": "npm run build && npm run test -w api",
     "test:e2e": "npm run test:e2e -w app"
   },
   "keywords": [],

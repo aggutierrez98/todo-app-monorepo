@@ -4,6 +4,9 @@ import todoRoutes from "../routes/todos.js";
 import usersRoutes from "../routes/users.js";
 import testingRoutes from "../routes/testing.js";
 import dbConnection from "../database/config.js";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 class Server {
   constructor() {
@@ -33,6 +36,10 @@ class Server {
   }
 
   routes() {
+    this.app.get("/healt", (_, res) => {
+      res.send("ok");
+    });
+
     this.app.use(this.paths.todos, todoRoutes);
     this.app.use(this.paths.users, usersRoutes);
 
@@ -40,6 +47,10 @@ class Server {
     if (process.env.NODE_ENV === "test") {
       this.app.use(this.paths.testing, testingRoutes);
     }
+
+    this.app.get("*", (_, res) => {
+      res.sendFile(path.resolve(__dirname, "../../app/build/index.html"));
+    });
   }
 
   listen() {

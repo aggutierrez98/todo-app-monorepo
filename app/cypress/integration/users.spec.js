@@ -2,7 +2,7 @@ describe.only("Users", () => {
   describe("Register tests", () => {
     beforeEach(() => {
       cy.request("POST", "http://localhost:8080/api/testing/resetUsers");
-      cy.visit("http://localhost:3000/register");
+      cy.visit("http://localhost:8080/register");
       cy.get("[placeholder='Name...']").clear();
       cy.get("[placeholder='Lastname...']").clear();
       cy.get("[placeholder='Email...']").clear();
@@ -98,14 +98,14 @@ describe.only("Users", () => {
     });
   });
 
-  describe.only("Login tests", () => {
+  describe("Login tests", () => {
     before(() => {
       cy.request("POST", "http://localhost:8080/api/testing/resetUsers");
       cy.createTestUser();
     });
 
     beforeEach(() => {
-      cy.visit("http://localhost:3000/login");
+      cy.visit("http://localhost:8080/login");
       cy.intercept({
         method: "POST",
         url: "http://localhost:8080/api/users/login",
@@ -176,7 +176,7 @@ describe.only("Users", () => {
       });
     });
 
-    it.only("When user logged infoCard data is correct", () => {
+    it("When user logged infoCard data is correct", () => {
       cy.loginWithTestUser();
 
       cy.window().then((win) => {
