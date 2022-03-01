@@ -66,7 +66,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: build
-          path: build
+          path: ./app/build
 
   e2e:
     needs: [lint, build]
