@@ -6,6 +6,7 @@
     "serve": "vite preview",
     "build": "vite build --emptyOutDir",
     "cypress:open": "cypress open",
+    "start-test": "export NODE_ENV=test && node ../api/ index.js",
     "test:e2e": "npx cypress run"
   },
   "dependencies": {
