@@ -88,6 +88,8 @@ jobs:
         with:
           name: build
           path: build
+      - name: Install dotenv
+        run: npm install dotenv
       - name: Prepare E2E Tests
         working-directory: ./api
         run: npm run test
