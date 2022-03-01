@@ -25,6 +25,10 @@
   "keywords": [],
   "author": "Agustin Manuel Gutierrez",
   "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2"
+  },
   "devDependencies": {
     "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.3.0",
