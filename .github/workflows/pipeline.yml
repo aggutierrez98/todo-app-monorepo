@@ -71,9 +71,9 @@ jobs:
   e2e:
     needs: [lint, build]
     runs-on: ubuntu-18.04
-    defaults:
-      run:
-        working-directory: ./app
+    # defaults:
+    #   run:
+    #     working-directory: ./app
     steps:
       - uses: actions/checkout@v2
         with:
