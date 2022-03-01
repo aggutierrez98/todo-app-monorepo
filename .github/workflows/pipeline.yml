@@ -99,9 +99,11 @@ jobs:
         with:
           name: build
           path: build
+
       - name: Prepare E2E Tests
         working-directory: ./api
         run: npm run test &
+
       - name: E2E Tests
         uses: cypress-io/github-action@v2
         with:
