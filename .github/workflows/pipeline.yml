@@ -33,7 +33,7 @@ jobs:
       #     node-version: "14"
       #     cache-dependency-path: ./api/package-lock.json
       - name: Install dependencies
-        run: npm install -dotenv--extended
+        run: npm install
 
   lint:
     needs: install
@@ -83,16 +83,15 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v2
         with:
-          cache: npm
+          # cache: npm
           node-version: "14"
       - name: Install dependencies
+        working-directory: ./api
         run: npm install
       - uses: actions/download-artifact@v2
         with:
           name: build
           path: build
-      # - name: Install dotenv
-      #   run: npm install dotenv
       - name: Prepare E2E Tests
         working-directory: ./api
         run: npm run test &
