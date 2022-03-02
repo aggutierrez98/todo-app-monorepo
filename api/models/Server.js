@@ -13,8 +13,6 @@ class Server {
     this.app = express();
     this.port = process.env.PORT || 8080;
 
-    console.log(process.env);
-
     this.paths = {
       todos: "/api/todos",
       users: "/api/users",

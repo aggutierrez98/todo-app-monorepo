@@ -98,7 +98,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build
-          path: build
+          path: ./app/build
 
       # - name: Prepare E2E Tests
       #   working-directory: ./api
