@@ -30,6 +30,9 @@ jobs:
         with:
           cache: npm
           node-version: "16"
+          cache-dependency-path: |
+            app/package-lock.json
+            api/package-lock.json
       - name: Install dependencies
         run: npm install
 
