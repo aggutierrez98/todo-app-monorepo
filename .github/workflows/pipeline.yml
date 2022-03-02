@@ -108,8 +108,8 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           working-directory: ./app
-          browser: chrome
-          headless: true
+          # browser: chrome
+          # headless: true
           command: npm run test:e2e
           # start: npm run start-test
           wait-on: http://localhost:8080
