@@ -30,13 +30,6 @@ jobs:
         with:
           cache: npm
           node-version: "16"
-
-      # - uses: actions/setup-node@v2
-      #   with:
-      #     cache: npm
-      #     node-version: "16"
-      #     cache-dependency-path: ./api/package-lock.json
-
       - name: Install dependencies
         run: npm install
 
@@ -86,7 +79,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
       - uses: actions/setup-node@v2
         with:
           cache: npm
@@ -94,24 +86,18 @@ jobs:
       - name: Install dependencies
         working-directory: ./api
         run: npm install
-
       - uses: actions/download-artifact@v2
         with:
           name: build
           path: ./app/build
-
       - name: Prepare E2E Tests
         working-directory: ./api
         run: npm run test &
-
       - name: E2E Tests
         uses: cypress-io/github-action@v2
         with:
           working-directory: ./app
-          # browser: chrome
-          # headless: true
           command: npm run test:e2e
-          # start: npm run start-test
           wait-on: http://localhost:8080
 
   deploy:
