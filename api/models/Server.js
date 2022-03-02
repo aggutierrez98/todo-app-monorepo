@@ -54,7 +54,7 @@ class Server {
   }
 
   listen() {
-    const server = this.app.listen(this.port, () => {
+    const server = this.app.listen(this.port || 8080, () => {
       console.log("Server running in port:", this.port || 8080);
     });
 
