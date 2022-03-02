@@ -2,7 +2,7 @@ import { useLogout } from "@/api/users";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useQueryClient } from "react-query";
-import PersonIcon from "@material-ui/icons/Person";
+import PersonIcon from "@mui/icons-material/Person";
 import Modal from "react-modal";
 Modal.setAppElement("#modal");
 

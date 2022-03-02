@@ -1,4 +1,4 @@
-import AddCircleIcon from "@material-ui/icons/AddCircle";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useState } from "react";
 import Modal from "react-modal";
 import { AgregarTodo } from "@c/AgregarTodo";
