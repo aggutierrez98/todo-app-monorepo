@@ -30,6 +30,7 @@ jobs:
         with:
           cache: npm
           node-version: "16"
+          npm-version: "8.5.2"
           cache-dependency-path: |
             ./app/package-lock.json
             ./api/package-lock.json
