@@ -15,6 +15,7 @@
     "prettier": "prettier --write .",
     "prepare": "husky install",
     "dev:api": "npm run build && npm run dev -w api",
+    "dev:app": "npm run dev -w app",
     "build": "npm run build -w app",
     "start": "npm run start -w api",
     "cypress": "npm run cypress:open -w app",
