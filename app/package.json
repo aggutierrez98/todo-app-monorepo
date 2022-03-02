@@ -6,8 +6,7 @@
     "serve": "vite preview",
     "build": "vite build --emptyOutDir",
     "cypress:open": "cypress open",
-    "test:e2e": "npx cypress run",
-    "prepare": "husky install"
+    "test:e2e": "npx cypress run"
   },
   "dependencies": {
     "@mui/icons-material": "^5.4.4",
@@ -24,7 +23,6 @@
     "@vitejs/plugin-react": "^1.1.0",
     "autoprefixer": "^10.4.0",
     "cypress": "^9.2.0",
-    "husky": "^7.0.0",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19",
     "vite": "^2.6.4"
