@@ -11,7 +11,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT;
+    this.port = process.env.PORT || 8080;
+
+    console.log(process.env);
 
     this.paths = {
       todos: "/api/todos",
@@ -54,8 +56,8 @@ class Server {
   }
 
   listen() {
-    const server = this.app.listen(this.port || 8080, () => {
-      console.log("Server running in port:", this.port || 8080);
+    const server = this.app.listen(this.port, () => {
+      console.log("Server running in port:", this.port);
     });
 
     return server;
