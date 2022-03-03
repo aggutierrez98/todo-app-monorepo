@@ -81,7 +81,7 @@ jobs:
           name: build
           path: ./app/build
 
-  e2e:
+  tests_e2e:
     needs: [lint, build]
     runs-on: ubuntu-18.04
     steps:
@@ -127,4 +127,4 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP}}
           heroku_email: ${{secrets.HEROKU_API_EMAIL}}
           healthcheck: "https://${{secrets.HEROKU_APP}}.herokuapp.com/healt"
-          rollbackonhealtcheckfailed: true
+          rollbackonhealthcheckfailed: true
