@@ -1,11 +1,11 @@
 import { useDeleteTodos } from "@/api/todos";
 
-export const ConfirarEliminar = ({ id, cancelar }) => {
+export const ConfirmDelete = ({ id, cancel }) => {
   const { mutate: deleteTodo, isLoading: isSubmitting } = useDeleteTodos();
 
-  const eliminar = () => {
+  const handleDelete = () => {
     deleteTodo(id);
-    cancelar();
+    cancel();
   };
 
   return (
@@ -20,7 +20,7 @@ export const ConfirarEliminar = ({ id, cancelar }) => {
           dark:bg-gray-700 dark:hover:bg-gray-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
           type="submit"
           title="Cancel action"
-          onClick={cancelar}
+          onClick={cancel}
         >
           Cancel
         </button>
@@ -28,7 +28,7 @@ export const ConfirarEliminar = ({ id, cancelar }) => {
           className="mt-3 sm:mt-0 sm:ml-5 text-lg uppercase p-2 disabled:bg-gray-600 text-white bg-red-600 rounded h-10 w-40 hover:bg-red-400 cursor-pointer
            transition-all duration-100 self-center dark:bg-red-800 dark:hover:bg-red-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
           type="submit"
-          onClick={eliminar}
+          onClick={handleDelete}
           disabled={isSubmitting}
           title="Confirm delete"
         >

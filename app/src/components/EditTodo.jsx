@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useEditTodos } from "@/api/todos";
 
-export const EditarTodo = ({
+export const EditTodo = ({
   info: { title, description, _id: id },
-  cancelar,
+  cancel,
 }) => {
   const {
     register,
@@ -15,7 +15,7 @@ export const EditarTodo = ({
 
   const onSubmit = (data) => {
     editTodo({ id, data });
-    cancelar();
+    cancel();
   };
 
   return (
@@ -27,8 +27,8 @@ export const EditarTodo = ({
         <div className="relative w-full mb-16">
           <input
             className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-blue-600  ${errors.title
-                ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                : ""
+              ? "focus-visible:border-red-600 border-red-600 border-b-2"
+              : ""
               } rounded-sm dark:bg-gray-800 dark:text-white`}
             {...register("title", {
               minLength: 6,
@@ -51,8 +51,8 @@ export const EditarTodo = ({
             id="textarea"
             type="text"
             className={` w-full resize-none h-48 p-4 focus-visible:outline-none border-transparent border-2 rounded-sm focus-visible:border-2 focus-visible:border-blue-600 ${errors.description
-                ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                : ""
+              ? "focus-visible:border-red-600 border-red-600 border-b-2"
+              : ""
               } dark:bg-gray-800 dark:text-white scrollbar-custom`}
             {...register("description", {
               minLength: 10,

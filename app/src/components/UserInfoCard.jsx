@@ -50,7 +50,7 @@ export const UserInfoCard = () => {
         <button
           onClick={() => setModalUserDataOpen(true)}
           className="dark:bg-gray-600 p-2 cellphone:p-4 text-[15px] bg-white dark:text-white shadow-sh 
-            rounded-full focus-visible:outline-none"
+            rounded-full focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
         >
           <PersonIcon />
         </button>
@@ -73,7 +73,8 @@ export const UserInfoCard = () => {
             </p>
             <button
               onClick={logout}
-              className="dark:bg-gray-600 mt-6 rounded-xl h-10 bg-gray-400 hover:bg-opacity-80 dark:hover:bg-gray-500 transition-all ease w-full"
+              className="dark:bg-gray-600 mt-6 rounded-xl h-10 bg-gray-400 hover:bg-opacity-80 dark:hover:bg-gray-500 transition-all ease w-full
+                focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
             >
               Logout
             </button>

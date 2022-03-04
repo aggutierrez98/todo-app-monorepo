@@ -2,18 +2,17 @@ import { response, request } from "express";
 import jwt from "jsonwebtoken";
 import Users from "../models/Users.js";
 
-export const validarJWT = async (req = request, res = response, next) => {
+export const validateJWT = async (req = request, res = response, next) => {
   const token = req.header("token");
   if (!token) {
     return res.status(401).json({
-      msg: "No hay token en la peticion",
+      msg: "No token sent in request",
     });
   }
 
   try {
     const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
 
-    //leer el usuario que corresponde al uid
     const user = await Users.findOne({ _id: uid });
 
     if (!user) {

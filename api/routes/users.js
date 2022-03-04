@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { login, register, revalidarToken } from "../controllers/users.js";
-import { userAlreadyExistsByEmail } from "../helpers/db-validators.js";
-import { validarJWT, validarCampos } from "../middlewares/index.js";
+import { login, register, renewToken } from "../controllers/users.js";
+import { userAlreadyExistsByEmail } from "../helpers/dbValidators.js";
+import { validateJWT, fieldsValidator } from "../middlewares/index.js";
 const router = Router();
 
 router.post(
@@ -14,7 +14,7 @@ router.post(
     check("email", "Email should be valid").isEmail(),
     check("email").custom(userAlreadyExistsByEmail),
     check("password", "Password is required").not().isEmpty(),
-    validarCampos,
+    fieldsValidator,
   ],
   register
 );
@@ -25,11 +25,11 @@ router.post(
     check("email", "Email is required").not().isEmpty(),
     check("email", "Email should be valid").isEmail(),
     check("password", "Password is required").not().isEmpty(),
-    validarCampos,
+    fieldsValidator,
   ],
   login
 );
 
-router.get("/renew", validarJWT, revalidarToken);
+router.get("/renew", validateJWT, renewToken);
 
 export default router;

@@ -1,6 +1,12 @@
+import loadingImage from '@a/loading.png';
+
 export const LoadingBar = ({ isLoading }) =>
   isLoading ? (
-    <div className="text-xl flex items-center justify-center grow h-20 rounded-lg bg-blue-400 text-white m-3 dark:bg-blue-800">
-      Loading...
+    <div className="flex items-center justify-center w-full mt-8 mb-8">
+      <img
+        className="animate-spin w-[25px] sm:w-[35px] xl:w-[45px] loading__image dark:loading__image-dark"
+        src={loadingImage}
+        alt="loading"
+      />
     </div>
   ) : null;

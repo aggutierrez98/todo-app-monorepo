@@ -3,8 +3,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import DoneIcon from "@mui/icons-material/Done";
 import Modal from "react-modal";
 import { useState, memo } from "react";
-import { EditarTodo } from "@c/EditarTodo";
-import { ConfirarEliminar } from "@c/ConfirarEliminar";
+import { EditTodo } from "@c/EditTodo";
+import { ConfirmDelete } from "@c/ConfirmDelete";
 import { useEditTodos } from "@/api/todos.js";
 Modal.setAppElement("#modal");
 
@@ -13,26 +13,28 @@ const InitTodoCard = ({ info }) => {
   const [modalOpen, setmodalOpen] = useState(false);
   const { mutate: editTodo } = useEditTodos();
   const [renderModal, setRenderModal] = useState({
-    eliminar: false,
-    editar: false,
+    delete: false,
+    edit: false,
   });
 
-  const editarTodo = (e) => {
-    e.stopPropagation();
-    setRenderModal({ eliminar: false, editar: true });
+  const handleEditTodo = (e) => {
+    e.stopPropagation()
+    if (e.key && e.key !== "Enter") return
+    setRenderModal({ delete: false, edit: true });
     setmodalOpen(true);
   };
 
-  const eliminarTodo = (e) => {
-    e.stopPropagation();
-    setRenderModal({ eliminar: true, editar: false });
+  const handleDeleteTodo = (e) => {
+    e.stopPropagation()
+    if (e.key && e.key !== "Enter") return
+    setRenderModal({ delete: true, edit: false });
     setmodalOpen(true);
   };
 
-  const doneTodo = () => {
+  const doneTodo = (e) => {
+    if (e.key && e.key !== "Enter") return
     editTodo({ id: info._id, data: { ...info, done: !info.done } });
   };
-
 
   return (
     <>
@@ -43,9 +45,7 @@ const InitTodoCard = ({ info }) => {
             dark:text-white cursor-pointer focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark 
              ${info?.done ? "dark:bg-gray-400 bg-gray-400 transition-all" : ""}`}
           onClick={doneTodo}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") doneTodo();
-          }}
+          onKeyDown={doneTodo}
           role="button"
           tabIndex={0}
         >
@@ -53,7 +53,7 @@ const InitTodoCard = ({ info }) => {
             {info.title}
             <span
               className={`truncate ${info?.done
-                ? "h-[2px] absolute self-center bg-gray-900 w-full"
+                ? "mt-[2px] h-[2px] absolute self-center dark:bg-gray-900 bg-gray-700 w-full"
                 : "hidden"
                 }`}
             ></span>
@@ -64,11 +64,8 @@ const InitTodoCard = ({ info }) => {
             )}
             <button
               title="Edit todo"
-              onClick={editarTodo}
-              onKeyDown={(e) => {
-                e.stopPropagation();
-                if (e.key === "Enter") editarTodo();
-              }}
+              onClick={handleEditTodo}
+              onKeyDown={handleEditTodo}
               className="rounded-md p-1 sm:p-2 bg-blue-600 text-white cursor-pointer ml-1 sm:ml-3 md:ml-4 hover:bg-blue-400 transition-all
                 dark:bg-blue-800 dark:hover:bg-blue-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
             >
@@ -76,11 +73,8 @@ const InitTodoCard = ({ info }) => {
             </button>
             <button
               title="Delete todo"
-              onClick={eliminarTodo}
-              onKeyDown={(e) => {
-                e.stopPropagation();
-                if (e.key === "Enter") eliminarTodo();
-              }}
+              onClick={handleDeleteTodo}
+              onKeyDown={handleDeleteTodo}
               className="rounded-md p-1 sm:p-2 bg-red-600 text-white cursor-pointer ml-1 sm:ml-3 md:ml-4 hover:bg-red-400 transition-all 
               dark:bg-red-800 dark:hover:bg-red-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
             >
@@ -98,17 +92,17 @@ const InitTodoCard = ({ info }) => {
           -translate-x-2/4 rounded-md dark:bg-gray-800 focus-visible:outline-none w-4/5 sm:w-auto"
         overlayClassName="fixed inset-0 bg-over font-poppins animate-fadeIn z-20"
       >
-        {renderModal.eliminar ? (
-          <ConfirarEliminar
+        {renderModal.delete ? (
+          <ConfirmDelete
             id={info._id}
-            cancelar={() => {
+            cancel={() => {
               setmodalOpen(false);
             }}
           />
         ) : (
-          <EditarTodo
+          <EditTodo
             info={info}
-            cancelar={() => {
+            cancel={() => {
               setmodalOpen(false);
             }}
           />

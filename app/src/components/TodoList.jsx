@@ -12,13 +12,10 @@ export const TodoList = () => {
 
   const {
     data,
-    isLoading,
     error,
-    isFetched,
     hasNextPage,
     fetchNextPage,
     isFetching,
-    isFetchingNextPage,
   } = useInfiniteQuery(
     ["todos", userId],
     ({ pageParam = 1 }) => getTodos(userId, TODOS_LOAD_LIMIT, pageParam),
@@ -33,8 +30,6 @@ export const TodoList = () => {
 
   return (
     <>
-      <LoadingBar isLoading={isLoading && !isFetched} />
-      <ErrorBar isError={error} />
       <ul className="flex flex-col">
         {data?.pages.map((todoGroup, index) => (
           <Fragment key={index}>
@@ -44,10 +39,11 @@ export const TodoList = () => {
           </Fragment>
         ))}
       </ul>
+      <ErrorBar isError={error} />
       <LoadingBar
-        isLoading={isFetching && !isFetchingNextPage && isFetched}
+        isLoading={isFetching}
       />
-      {data && (
+      {data && !isFetching && (
         <button
           onClick={fetchNextPage}
           disabled={!hasNextPage}

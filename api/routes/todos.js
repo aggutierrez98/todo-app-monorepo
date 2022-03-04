@@ -1,51 +1,51 @@
 import { Router } from "express";
 import {
-  obtenerTodos,
-  crearTodo,
-  actualizarTodo,
-  borarTodo,
+  getTodos,
+  createTodo,
+  updateTodo,
+  deleteTodo,
 } from "../controllers/todos.js";
-import { todoExistsById, userExistsById } from "../helpers/db-validators.js";
+import { todoExistsById, userExistsById } from "../helpers/dbValidators.js";
 import { check } from "express-validator";
-import { validarJWT, validarCampos } from "../middlewares/index.js";
+import { validateJWT, fieldsValidator } from "../middlewares/index.js";
 
 const router = Router();
 
-router.get("/", [validarJWT, validarCampos], obtenerTodos);
+router.get("/", [validateJWT, fieldsValidator], getTodos);
 
 router.post(
   "/",
   [
-    validarJWT,
+    validateJWT,
     check("title", "Title is required").not().isEmpty(),
     check("description", "Description is required").not().isEmpty(),
     check("userId", "Should be valid MongoID").isMongoId(),
     check("userId").custom(userExistsById),
-    validarCampos,
+    fieldsValidator,
   ],
-  crearTodo
+  createTodo
 );
 
 router.put(
   "/:id",
   [
-    validarJWT,
-    check("id", "No es un ID valido").isMongoId(),
+    validateJWT,
+    check("id", "Should be valid MongoID").isMongoId(),
     check("id").custom(todoExistsById),
-    validarCampos,
+    fieldsValidator,
   ],
-  actualizarTodo
+  updateTodo
 );
 
 router.delete(
   "/:id",
   [
-    validarJWT,
-    check("id", "No es un ID valido").isMongoId(),
+    validateJWT,
+    check("id", "Should be valid MongoID").isMongoId(),
     check("id").custom(todoExistsById),
-    validarCampos,
+    fieldsValidator,
   ],
-  borarTodo
+  deleteTodo
 );
 
 export default router;

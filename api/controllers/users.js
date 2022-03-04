@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
 import { request, response } from "express";
-import generarJWT from "../helpers/generar-jwt.js";
+import generateJWT from "../helpers/generateJWT.js";
 import Users from "../models/Users.js";
 
 const login = async (req = request, res = response) => {
@@ -9,14 +9,12 @@ const login = async (req = request, res = response) => {
   try {
     const user = await Users.findOne({ email });
 
-    //Verificar si el email existe
     if (!user) {
       return res.status(400).json({
         msg: "Wrong credentials",
       });
     }
 
-    //Verificar contraseña
     const validPassword = bcryptjs.compareSync(password, user.password);
     if (!validPassword) {
       return res.status(400).json({
@@ -24,8 +22,7 @@ const login = async (req = request, res = response) => {
       });
     }
 
-    //Generar el JWT
-    const token = await generarJWT(user.id);
+    const token = await generateJWT(user.id);
 
     const userReturned = {
       uid: user._id,
@@ -41,7 +38,7 @@ const login = async (req = request, res = response) => {
   } catch (e) {
     console.log(e);
     return res.status(500).json({
-      msg: "Server problem",
+      msg: "Server error",
     });
   }
 };
@@ -52,11 +49,9 @@ const register = async (req = request, res = response) => {
   try {
     const user = new Users({ name, lastName, email, password });
 
-    //Encriptar la contraseña
     const salt = bcryptjs.genSaltSync();
     user.password = bcryptjs.hashSync(password, salt);
 
-    //Guardar en DB
     await user.save();
 
     const userReturned = {
@@ -72,17 +67,16 @@ const register = async (req = request, res = response) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      msg: "Server problem",
+      msg: "Server error",
     });
   }
 };
 
-const revalidarToken = async (req = request, res = response) => {
+const renewToken = async (req = request, res = response) => {
   const { _id, name } = req.usuario;
 
   try {
-    // Generar JWT
-    const token = await generarJWT(_id, name);
+    const token = await generateJWT(_id, name);
     const user = await Users.findById(_id);
 
     const userReturned = {
@@ -99,9 +93,9 @@ const revalidarToken = async (req = request, res = response) => {
   } catch (error) {
     console.log(error);
     return res.status(500).json({
-      msg: "Server problem",
+      msg: "Server error",
     });
   }
 };
 
-export { login, register, revalidarToken };
+export { login, register, renewToken };

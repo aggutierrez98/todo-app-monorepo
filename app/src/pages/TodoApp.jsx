@@ -20,19 +20,19 @@ function TodoApp() {
             onClick={toogleTheme}
             className="2xl:p-2 absolute p-2 w-15 h-15 left-28 sm:left-16 2xl:-left-2 bg-green-400 rounded-full cursor-pointer hover:text-reen-400 
               transition-all dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-400 focus-visible:outline-custom-light 
-              dark:focus-visible:outline-custom-dark"
+              dark:focus-visible:outline-custom-dark shadow-sh"
           >
             {themeState ? (
               <img
                 src={lightMode}
                 alt="toogle-light"
-                className="p-0 w-7 sm:w-10 2xl:w-12"
+                className="p-0 w-7 h-7 sm:w-10 2xl:w-12 sm:h-10 2xl:h-12"
               />
             ) : (
               <img
                 src={darkMode}
                 alt="toogle-dark"
-                className="p-0 w-7 sm:w-10 2xl:w-12"
+                className="p-0 w-7 h-7 sm:w-10 2xl:w-12 sm:h-10 2xl:h-12"
               />
             )}
           </button>

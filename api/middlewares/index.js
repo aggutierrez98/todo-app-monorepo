@@ -1,2 +1,2 @@
-export { validarCampos } from "./validar-campos.js";
-export { validarJWT } from "./validar-jwt.js";
+export { fieldsValidator } from "./fieldsValidator.js";
+export { validateJWT } from "./validateJWT.js";

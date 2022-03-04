@@ -1,4 +1,3 @@
-// import React from "react";
 import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -8,7 +7,7 @@ import "./globals.css"
 
 //TODO: Mejorar rendimiento de la pagina aplicando lo de midudev
 //TODO: Hacer pagina PWA
-//TODO: Que todo el codigo y contenido de la pagina esten en ingles
+//TODO: Mejorar README.md
 
 const queryClient = new QueryClient({
   defaultOptions: {

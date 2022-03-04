@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const generarJWT = (uid = "") => {
+const generateJWT = (uid = "") => {
   return new Promise((resolve, reject) => {
     const payload = { uid };
 
@@ -13,7 +13,7 @@ const generarJWT = (uid = "") => {
       (err, token) => {
         if (err) {
           console.log(err);
-          reject("No se pudo generar el token");
+          reject("Token could not be generated");
         } else {
           resolve(token);
         }
@@ -22,4 +22,4 @@ const generarJWT = (uid = "") => {
   });
 };
 
-export default generarJWT;
+export default generateJWT;

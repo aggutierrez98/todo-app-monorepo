@@ -23,7 +23,9 @@ export const renewLogin = async () => {
       localStorage.setItem("token-init-date", new Date().getTime());
       return data.data.user;
     } catch (error) {
-      console.log(error.response.data.msg);
+      if (import.meta.env.DEV === true) {
+        console.log(error.response.data.msg);
+      }
     }
   }
 };

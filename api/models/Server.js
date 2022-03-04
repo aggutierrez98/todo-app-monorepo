@@ -19,12 +19,12 @@ class Server {
       testing: "/api/testing",
     };
 
-    this.conectarDB();
+    this.connectDB();
     this.middlewares();
     this.routes();
   }
 
-  async conectarDB() {
+  async connectDB() {
     await dbConnection();
   }
 
