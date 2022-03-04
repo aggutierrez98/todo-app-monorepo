@@ -38,11 +38,10 @@ export const LoginPage = ({ location }) => {
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${
-               errors.email
-                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                 : ""
-             } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${errors.email
+                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                  : ""
+                } dark:bg-gray-800 dark:text-white`}
               {...register("email", {
                 required: true,
                 minLength: 6,
@@ -60,10 +59,10 @@ export const LoginPage = ({ location }) => {
             )}
             {(errors.email?.type === "minLength" ||
               errors.email?.type === "maxLength") && (
-              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Email should be more than 6 and less than 30 characters
-              </p>
-            )}
+                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
+                  Email should be more than 6 and less than 30 characters
+                </p>
+              )}
             {errors.email?.type === "pattern" && (
               <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
                 Email should be valid
@@ -78,11 +77,10 @@ export const LoginPage = ({ location }) => {
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${
-               errors.password
-                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                 : ""
-             } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${errors.password
+                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                  : ""
+                } dark:bg-gray-800 dark:text-white`}
               {...register("password", {
                 required: true,
                 minLength: 6,
@@ -99,10 +97,10 @@ export const LoginPage = ({ location }) => {
             )}
             {(errors.password?.type === "minLength" ||
               errors.password?.type === "maxLength") && (
-              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Password should be more than 6 and less than 30 characters
-              </p>
-            )}
+                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
+                  Password should be more than 6 and less than 30 characters
+                </p>
+              )}
             {errors.password?.type === "credentials" && (
               <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
                 {errors.password.message}
@@ -111,7 +109,8 @@ export const LoginPage = ({ location }) => {
           </div>
           <button
             className="disabled:bg-gray-500 text-lg uppercase p-2 text-white bg-green-600 rounded h-10 w-40 hover:bg-green-400 cursor-pointer
-             transition-all duration-100 self-center dark:bg-green-700 dark:hover:bg-green-600"
+              transition-all duration-100 self-center dark:bg-green-700 dark:hover:bg-green-600 focus-visible:outline-custom-light 
+              dark:focus-visible:outline-custom-dark"
             type="submit"
             disabled={isSubmitting}
             title="Login button"
@@ -121,7 +120,7 @@ export const LoginPage = ({ location }) => {
           <div className="self-start flex text-[18px] mt-8">
             <p>Dont have account?</p>
             <Link
-              className="ml-2 underline dark:text-blue-400 text-blue-600 mb-8"
+              className="ml-2 underline dark:text-blue-400 text-blue-600 mb-8 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
               to="/register"
             >
               Register

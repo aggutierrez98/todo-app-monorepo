@@ -38,11 +38,10 @@ export const RegisterPage = () => {
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${
-               errors.name
-                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                 : ""
-             } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${errors.name
+                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                  : ""
+                } dark:bg-gray-800 dark:text-white`}
               {...register("name", {
                 required: true,
                 minLength: 6,
@@ -58,19 +57,18 @@ export const RegisterPage = () => {
             )}
             {(errors.name?.type === "minLength" ||
               errors.name?.type === "maxLength") && (
-              <p className="absolute top-10 text-red-600 dark:text-red-500 p-4">
-                Name should be more than 6 and less than 30 characters
-              </p>
-            )}
+                <p className="absolute top-10 text-red-600 dark:text-red-500 p-4">
+                  Name should be more than 6 and less than 30 characters
+                </p>
+              )}
           </div>
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${
-               errors.lastName
-                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                 : ""
-             } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${errors.lastName
+                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                  : ""
+                } dark:bg-gray-800 dark:text-white`}
               {...register("lastName", {
                 required: true,
                 minLength: 6,
@@ -86,19 +84,18 @@ export const RegisterPage = () => {
             )}
             {(errors.lastName?.type === "minLength" ||
               errors.lastName?.type === "maxLength") && (
-              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Lastname should be more than 6 and less than 30 characters
-              </p>
-            )}
+                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
+                  Lastname should be more than 6 and less than 30 characters
+                </p>
+              )}
           </div>
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${
-               errors.email
-                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                 : ""
-             } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${errors.email
+                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                  : ""
+                } dark:bg-gray-800 dark:text-white`}
               {...register("email", {
                 required: true,
                 minLength: 6,
@@ -115,10 +112,10 @@ export const RegisterPage = () => {
             )}
             {(errors.email?.type === "minLength" ||
               errors.email?.type === "maxLength") && (
-              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Email should be more than 6 and less than 30 characters
-              </p>
-            )}
+                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
+                  Email should be more than 6 and less than 30 characters
+                </p>
+              )}
             {errors.email?.type === "pattern" && (
               <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
                 Email should be valid
@@ -133,11 +130,10 @@ export const RegisterPage = () => {
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${
-               errors.password
-                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                 : ""
-             } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${errors.password
+                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                  : ""
+                } dark:bg-gray-800 dark:text-white`}
               {...register("password", {
                 required: true,
                 minLength: 6,
@@ -154,13 +150,15 @@ export const RegisterPage = () => {
             )}
             {(errors.password?.type === "minLength" ||
               errors.password?.type === "maxLength") && (
-              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Password should be more than 6 and less than 30 characters
-              </p>
-            )}
+                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
+                  Password should be more than 6 and less than 30 characters
+                </p>
+              )}
           </div>
           <button
-            className="disabled:bg-gray-500 text-lg uppercase p-2 text-white bg-green-600 rounded h-10 w-40 hover:bg-green-400 cursor-pointer transition-all duration-100 self-center dark:bg-green-800 dark:hover:bg-green-600"
+            className="disabled:bg-gray-500 text-lg uppercase p-2 text-white bg-green-600 rounded h-10 w-40 hover:bg-green-400 cursor-pointer 
+              transition-all duration-100 self-center dark:bg-green-800 dark:hover:bg-green-600 focus-visible:outline-custom-light
+              dark:focus-visible:outline-custom-dark"
             type="submit"
             disabled={isSubmitting}
             title="Register button"
@@ -170,7 +168,7 @@ export const RegisterPage = () => {
           <div className="self-start flex text-[18px] mt-8">
             <p>Already have an account?</p>
             <Link
-              className="ml-2 underline dark:text-blue-400 mb-8 text-blue-600"
+              className="ml-2 underline dark:text-blue-400 mb-8 text-blue-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
               to="/login"
             >
               Login

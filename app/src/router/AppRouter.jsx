@@ -7,6 +7,10 @@ import { RegisterPage } from "@p/RegisterPage";
 import { renewLogin } from "@/api/users.js";
 import { useQuery } from "react-query";
 import { useToogleTheme } from "@h/useToogleTheme";
+import { LoadingPage } from "@c/LoadingPage";
+import { Fallback } from "@c/Fallback";
+import { ErrorBoundary } from "react-error-boundary";
+
 
 export const AppRouter = () => {
   useToogleTheme();
@@ -15,33 +19,40 @@ export const AppRouter = () => {
     retry: false,
   });
 
-  if (isLoading) return <h5>Espere</h5>;
+  const errorHandler = (error, errorInfo) => {
+    console.log("Logging", error, errorInfo);
+  };
+
+  if (isLoading) return <LoadingPage />;
 
   return (
     <Router>
-      <Switch>
-        <PublicRoute
-          exact
-          path="/login"
-          component={LoginPage}
-          isAuthenticated={!!userData}
-        />
-        <PublicRoute
-          exact
-          path="/register"
-          component={RegisterPage}
-          isAuthenticated={!!userData}
-        />
+      <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
 
-        <PrivateRoute
-          exact
-          path="/"
-          component={TodoApp}
-          isAuthenticated={!!userData}
-        />
+        <Switch>
+          <PublicRoute
+            exact
+            path="/login"
+            component={LoginPage}
+            isAuthenticated={!!userData}
+          />
+          <PublicRoute
+            exact
+            path="/register"
+            component={RegisterPage}
+            isAuthenticated={!!userData}
+          />
 
-        <Redirect to="/" />
-      </Switch>
+          <PrivateRoute
+            exact
+            path="/"
+            component={TodoApp}
+            isAuthenticated={!!userData}
+          />
+
+          <Redirect to="/" />
+        </Switch>
+      </ErrorBoundary>
     </Router>
   );
 };

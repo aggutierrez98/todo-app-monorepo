@@ -16,7 +16,8 @@ export const ConfirarEliminar = ({ id, cancelar }) => {
 
       <div className="flex flex-col sm:flex-row mt-10 sm:mt-14">
         <button
-          className="text-lg uppercase p-2 text-white bg-gray-600 rounded h-10 w-40 hover:bg-gray-400 cursor-pointer transition-all duration-100 self-center dark:bg-gray-700 dark:hover:bg-gray-600"
+          className="text-lg uppercase p-2 text-white bg-gray-600 rounded h-10 w-40 hover:bg-gray-400 cursor-pointer transition-all duration-100 self-center 
+          dark:bg-gray-700 dark:hover:bg-gray-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
           type="submit"
           title="Cancel action"
           onClick={cancelar}
@@ -24,7 +25,8 @@ export const ConfirarEliminar = ({ id, cancelar }) => {
           Cancel
         </button>
         <button
-          className="mt-3 sm:mt-0 sm:ml-5 text-lg uppercase p-2 disabled:bg-gray-600 text-white bg-red-600 rounded h-10 w-40 hover:bg-red-400 cursor-pointer transition-all duration-100 self-center dark:bg-red-800 dark:hover:bg-red-600"
+          className="mt-3 sm:mt-0 sm:ml-5 text-lg uppercase p-2 disabled:bg-gray-600 text-white bg-red-600 rounded h-10 w-40 hover:bg-red-400 cursor-pointer
+           transition-all duration-100 self-center dark:bg-red-800 dark:hover:bg-red-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
           type="submit"
           onClick={eliminar}
           disabled={isSubmitting}

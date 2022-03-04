@@ -19,25 +19,26 @@ export const UserInfoCard = () => {
   return (
     <>
       <div
-        className="fixed right-[20px] top-[13px] max-w-[200px] lg:max-w-[300px] xl:max-w-[400px] hidden md:flex flex-col dark:bg-gray-600 p-2 text-[15px]
+        className="fixed right-[20px] top-[13px] w-[200px] lg:w-[300px] xl:w-[400px] hidden md:flex flex-col dark:bg-gray-600 p-2 text-[15px]
           lg:text-[17px] xl:text-[18px] 2xl:text-[21px] bg-white dark:text-white shadow-sh rounded-sm z-10"
         id="userInfoCard"
       >
         <div className="flex truncate ml-1">
-          <p className="truncate" data-test-id={userData?.name}>
+          <p className="truncate h-5 lg:h-6 xl:h-8" data-test-id={userData?.name}>
             {userData?.name}
           </p>
-          <p className="ml-1 truncate" data-test-id={userData?.lastName}>
+          <p className="ml-1 truncate h-5 lg:h-6 xl:h-8" data-test-id={userData?.lastName}>
             {userData?.lastName}
           </p>
         </div>
-        <p className="truncate ml-1" data-test-id={userData?.email}>
+        <p className="truncate ml-1 h-5 lg:h-6 xl:h-8" data-test-id={userData?.email}>
           {userData?.email}
         </p>
         <button
           onClick={logout}
           title="Logout"
-          className="dark:bg-gray-800 mt-2 lg:mt-3 xl:mt-4 rounded-xl 2xl:h-10 bg-gray-400 hover:bg-opacity-80 dark:hover:bg-opacity-80 transition-all ease"
+          className="dark:bg-gray-800 mt-2 lg:mt-3 xl:mt-4 rounded-xl 2xl:h-10 bg-gray-400 hover:bg-opacity-80 dark:hover:bg-opacity-80 transition-all ease
+            focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
         >
           Logout
         </button>

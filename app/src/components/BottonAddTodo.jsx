@@ -20,7 +20,8 @@ export const BottonAddTodo = () => {
         <h2 className="mr-5 justify-self-center">Add Todo</h2>
         <button
           title="Add todo"
-          className="outline-none focus-visible:outline-none text-green-600 cursor-pointer hover:text-green-400 transition-all"
+          className="outline-none text-green-600 cursor-pointer hover:text-green-400 transition-all focus-visible:outline-custom-light
+            dark:focus-visible:outline-custom-dark rounded-full"
           onClick={openModal}
         >
           <AddCircleIcon className="text-20px sm:text-40px p-0" />
@@ -30,7 +31,8 @@ export const BottonAddTodo = () => {
         isOpen={modalOpen}
         onRequestClose={closeModal}
         contentLabel="Example Modal"
-        className="p-8 sm:p-15 w-4/5 sm:w-auto absolute p-15 overflow-auto outline-0 bg-white inset-auto top-2/4 left-2/4 mr--2/4 opacity-100 mr--50 -translate-y-2/4 -translate-x-2/4 rounded-md dark:bg-gray-800 focus-visible:outline-none"
+        className="p-8 sm:p-15 w-4/5 sm:w-auto absolute p-15 overflow-auto outline-0 bg-white inset-auto top-2/4 left-2/4 mr--2/4 opacity-100 mr--50 
+          -translate-y-2/4 -translate-x-2/4 rounded-md dark:bg-gray-800 focus-visible:outline-none"
         overlayClassName="fixed inset-0 bg-over font-poppins animate-fadeIn z-20"
       >
         <AgregarTodo closeModal={closeModal} />

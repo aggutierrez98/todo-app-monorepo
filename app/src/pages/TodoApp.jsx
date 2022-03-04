@@ -10,7 +10,7 @@ function TodoApp() {
 
   return (
     <div
-      className="pt-6 sm:p-12 h-screen w-screen font-poppins dark:bg-gray-800 overflow-y-scroll overflow-x-hidden scrollbar-custom"
+      className="pt-6 sm:p-12 h-screen w-screen font-poppins dark:bg-gray-800 overflow-y-scroll overflow-x-hidden scrollbar-custom "
       id="app"
     >
       <div className="flex flex-col m-2 items-center h-4/5">
@@ -18,7 +18,9 @@ function TodoApp() {
           <button
             title="Toogle theme"
             onClick={toogleTheme}
-            className="2xl:p-2 absolute p-2 w-15 h-15 left-28 sm:left-16 2xl:-left-2 bg-green-400 rounded-full cursor-pointer hover:text-reen-400 transition-all dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-400"
+            className="2xl:p-2 absolute p-2 w-15 h-15 left-28 sm:left-16 2xl:-left-2 bg-green-400 rounded-full cursor-pointer hover:text-reen-400 
+              transition-all dark:bg-green-700 hover:bg-green-700 dark:hover:bg-green-400 focus-visible:outline-custom-light 
+              dark:focus-visible:outline-custom-dark"
           >
             {themeState ? (
               <img

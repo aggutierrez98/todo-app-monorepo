@@ -2,13 +2,14 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import DoneIcon from "@mui/icons-material/Done";
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, memo } from "react";
 import { EditarTodo } from "@c/EditarTodo";
 import { ConfirarEliminar } from "@c/ConfirarEliminar";
 import { useEditTodos } from "@/api/todos.js";
 Modal.setAppElement("#modal");
 
-export const TodoCard = ({ info }) => {
+const InitTodoCard = ({ info }) => {
+
   const [modalOpen, setmodalOpen] = useState(false);
   const { mutate: editTodo } = useEditTodos();
   const [renderModal, setRenderModal] = useState({
@@ -32,30 +33,29 @@ export const TodoCard = ({ info }) => {
     editTodo({ id: info._id, data: { ...info, done: !info.done } });
   };
 
+
   return (
     <>
       <li>
         <div
           title={`${info?.done ? "Undo" : "Do"} todo`}
           className={`flex justify-between items-center shadow-sh pl-3 p-2 sm:p-3 m-2 sm:text-xl rounded-sm animate-fadeIn animate-fadeOut dark:bg-gray-600 
-          dark:text-white cursor-pointer ${
-            info?.done ? "dark:bg-gray-400 bg-gray-400 transition-all" : ""
-          }`}
+            dark:text-white cursor-pointer focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark 
+             ${info?.done ? "dark:bg-gray-400 bg-gray-400 transition-all" : ""}`}
           onClick={doneTodo}
           onKeyDown={(e) => {
             if (e.key === "Enter") doneTodo();
           }}
           role="button"
-          tabIndex={info._id}
+          tabIndex={0}
         >
           <p className="ml-2 leading-6 relative flex truncate">
             {info.title}
             <span
-              className={`truncate ${
-                info?.done
-                  ? "h-[2px] absolute self-center bg-gray-900 w-full"
-                  : "hidden"
-              }`}
+              className={`truncate ${info?.done
+                ? "h-[2px] absolute self-center bg-gray-900 w-full"
+                : "hidden"
+                }`}
             ></span>
           </p>
           <div className="min-w-max">
@@ -65,16 +65,24 @@ export const TodoCard = ({ info }) => {
             <button
               title="Edit todo"
               onClick={editarTodo}
-              className="rounded-md p-1 sm:p-2 outline-none focus-visible:outline-none bg-blue-600 text-white cursor-pointer ml-1 sm:ml-3 md:ml-4 
-              hover:bg-blue-400 transition-all dark:bg-blue-800 dark:hover:bg-blue-600"
+              onKeyDown={(e) => {
+                e.stopPropagation();
+                if (e.key === "Enter") editarTodo();
+              }}
+              className="rounded-md p-1 sm:p-2 bg-blue-600 text-white cursor-pointer ml-1 sm:ml-3 md:ml-4 hover:bg-blue-400 transition-all
+                dark:bg-blue-800 dark:hover:bg-blue-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
             >
               <EditIcon className=" sm:text-2xl" />
             </button>
             <button
               title="Delete todo"
               onClick={eliminarTodo}
-              className="rounded-md p-1 sm:p-2 outline-none focus-visible:outline-none bg-red-600 text-white cursor-pointer ml-1 sm:ml-3 md:ml-4 
-              hover:bg-red-400 transition-all dark:bg-red-800 dark:hover:bg-red-600"
+              onKeyDown={(e) => {
+                e.stopPropagation();
+                if (e.key === "Enter") eliminarTodo();
+              }}
+              className="rounded-md p-1 sm:p-2 bg-red-600 text-white cursor-pointer ml-1 sm:ml-3 md:ml-4 hover:bg-red-400 transition-all 
+              dark:bg-red-800 dark:hover:bg-red-600 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
             >
               <DeleteOutlineIcon className="sm:text-2xl" />
             </button>
@@ -109,3 +117,6 @@ export const TodoCard = ({ info }) => {
     </>
   );
 };
+
+export const TodoCard = memo(InitTodoCard)
+

@@ -23,7 +23,7 @@ export const renewLogin = async () => {
       localStorage.setItem("token-init-date", new Date().getTime());
       return data.data.user;
     } catch (error) {
-      throw new Error(error.response.data.msg);
+      console.log(error.response.data.msg);
     }
   }
 };

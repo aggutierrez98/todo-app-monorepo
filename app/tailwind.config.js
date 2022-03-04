@@ -47,6 +47,10 @@ module.exports = {
       spacing: {
         "-50": "-50%",
       },
+      outline: {
+        "custom-light": "3px solid black",
+        "custom-dark": "3px solid white",
+      },
     },
   },
   variants: {

@@ -33,9 +33,9 @@ export const TodoList = () => {
 
   return (
     <>
+      <LoadingBar isLoading={isLoading && !isFetched} />
+      <ErrorBar isError={error} />
       <ul className="flex flex-col">
-        <LoadingBar isLoading={isLoading && !isFetched} />
-        <ErrorBar isError={error} />
         {data?.pages.map((todoGroup, index) => (
           <Fragment key={index}>
             {todoGroup.data.map((todo) => (
@@ -43,20 +43,21 @@ export const TodoList = () => {
             ))}
           </Fragment>
         ))}
-        <LoadingBar
-          isLoading={isFetching && !isFetchingNextPage && isFetched}
-        />
-        {data && (
-          <button
-            onClick={fetchNextPage}
-            disabled={!hasNextPage}
-            className="mt-6 mb-6 shadow-sh w-48 h-10 text-lg sm:w-60 sm:h-12 self-center text-white bg-blue-500 rounded-md hover:bg-blue-400 
-            disabled:bg-gray-400 dark:bg-blue-600 dark:hover:bg-blue-500 dark:disabled:bg-gray-500 transition-all"
-          >
-            Load-More...
-          </button>
-        )}
       </ul>
+      <LoadingBar
+        isLoading={isFetching && !isFetchingNextPage && isFetched}
+      />
+      {data && (
+        <button
+          onClick={fetchNextPage}
+          disabled={!hasNextPage}
+          className="mt-6 mb-6 shadow-sh w-48 h-10 text-lg sm:w-60 sm:h-12 self-center text-white bg-blue-500 rounded-md hover:bg-blue-400 
+            disabled:bg-gray-400 dark:bg-blue-600 dark:hover:bg-blue-500 dark:disabled:bg-gray-500 transition-all 
+            focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark"
+        >
+          Load-More...
+        </button>
+      )}
     </>
   );
 };
