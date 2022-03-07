@@ -21,7 +21,7 @@ if (window.Cypress) {
   window.queryClient = queryClient;
 }
 
-ReactDOM.render(
+ReactDOM.renderToStaticNodeStream()(
   <QueryClientProvider client={queryClient}>
     <AppRouter />
     <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"} />
