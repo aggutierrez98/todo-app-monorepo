@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
@@ -17,7 +17,6 @@ const TodoApp = lazy(() => import(/* webpackChunkName: "TodoApp" */"@p/TodoApp")
 
 export const AppRouter = () => {
   const [themeState, toogleTheme] = useToogleTheme();
-  // const [width, setWidth] = useState()
   const { data: userData, isLoading } = useQuery("user", renewLogin, {
     retry: false,
   });
@@ -26,23 +25,11 @@ export const AppRouter = () => {
     console.log("Logging", error, errorInfo);
   };
 
-
-  // console.log(width);
-
-  // useEffect(() => {
-  //   setWidth(screen.width);
-  // }, [screen.width])
-
-
   return (
     <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
       {isLoading && <LoadingPage />}
 
       <div
-        // className={`pt-6 sm:p-12 h-full w-full ${userData ? "dark:bg-gray-800" : `${screen.width > 640 ? "dark:bg-gray-800" : "dark:bg-gray-600"}`}
-        //  overflow-y-scroll overflow-x-hidden`}
-        // className={`pt-6 sm:p-12 h-full w-full sm:dark:bg-gray-800 ${userData ? "dark:bg-gray-800" : "bg-gray-600"}
-        //  overflow-y-scroll overflow-x-hidden`}
         className={`pt-6 h-full w-full sm:dark:bg-gray-800 
          overflow-y-scroll overflow-x-hidden pb-8`}
         id="app"
@@ -53,8 +40,6 @@ export const AppRouter = () => {
             <button
               title="Toogle theme"
               onClick={toogleTheme}
-              // className="2xl:p-2  p-2 w-15 h-15 bg-green-400 rounded-full hover:text-green-400 transition-all dark:bg-green-700 hover:bg-green-700 
-              // dark:hover:bg-green-400 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark shadow-sh absolute left-[-50px]"
               className="2xl:p-2 p-2 w-15 h-15 bg-green-400 rounded-full hover:text-green-400 transition-all dark:bg-green-700 hover:bg-green-700 
             dark:hover:bg-green-400 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark shadow-sh mr-2"
             >
