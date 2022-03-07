@@ -1,6 +1,4 @@
 // Tailwind.config.js
-const plugin = require("tailwindcss/plugin");
-
 module.exports = {
   mode: "jit",
   purge: [

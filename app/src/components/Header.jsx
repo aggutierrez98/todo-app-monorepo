@@ -6,7 +6,7 @@ export const Header = () => {
     const [themeState, toogleTheme] = useToogleTheme();
 
     return (
-        <header className="relative flex items-center 2xl:items-start mt-6 mr-5">
+        <header className="relative flex items-center 2xl:items-start mt-6 mr-10 sm:mr-5 ">
             <button
                 title="Toogle theme"
                 onClick={toogleTheme}
@@ -23,11 +23,11 @@ export const Header = () => {
                     <img
                         src={darkMode}
                         alt="toogle-dark"
-                        className="p-0 w-5 h-5 sm:w-12 sm:h-10 2xl:w-12 2xl:h-12"
+                        className="p-0 w-5 h-5 sm:w-10 sm:h-10 2xl:w-12 2xl:h-12"
                     />
                 )}
             </button>
-            <h1 className="text-2xl ml-10 font-bold text-green-600 sm:text-5xl 2xl:text-7xl dark:text-green-400">
+            <h1 className="text-2xl ml-2 font-bold text-green-600 sm:text-5xl 2xl:text-7xl dark:text-green-400">
                 Todo App
             </h1>
         </header>
