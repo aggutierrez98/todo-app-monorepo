@@ -81,40 +81,39 @@ jobs:
           name: build
           path: ./app/build
 
-  # tests_e2e:
-  #   needs: [lint, build]
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
-  #     - uses: actions/setup-node@v2
-  #       with:
-  #         cache: npm
-  #         node-version: "16"
-  #         cache-dependency-path: |
-  #           ./app/package-lock.json
-  #           ./api/package-lock.json
-  #     - name: Install dependencies
-  #       working-directory: ./api
-  #       run: npm ci
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: build
-  #         path: ./app/build
-  #     - name: Prepare E2E Tests
-  #       working-directory: ./api
-  #       run: npm run test &
-  #     - name: E2E Tests
-  #       uses: cypress-io/github-action@v2
-  #       with:
-  #         working-directory: ./app
-  #         command: npm run test:e2e
-  #         wait-on: http://localhost:8080
+  tests_e2e:
+    needs: [lint, build]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          cache: npm
+          node-version: "16"
+          cache-dependency-path: |
+            ./app/package-lock.json
+            ./api/package-lock.json
+      - name: Install dependencies
+        working-directory: ./api
+        run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: ./app/build
+      - name: Prepare E2E Tests
+        working-directory: ./api
+        run: npm run test &
+      - name: E2E Tests
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ./app
+          command: npm run test:e2e
+          wait-on: http://localhost:8080
 
   deploy:
-    # needs: [tests_e2e]
-    needs: [lint, build]
+    needs: [tests_e2e]
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
