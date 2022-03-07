@@ -113,10 +113,7 @@ describe("TodosPage", () => {
 
       it("Todo can be done", () => {
         cy.get("div[title='Do todo']").click().as("theTodo");
-        cy.get("@theTodo").should(
-          "have.class",
-          "dark:bg-gray-400 bg-gray-400 transition-all"
-        );
+        cy.get("@theTodo").should("have.class", "bg-gray-400 transition-all");
       });
 
       it("Todo can be undone", () => {
@@ -127,7 +124,7 @@ describe("TodosPage", () => {
         cy.get("div[title='Undo todo']").click().as("theTodo");
         cy.get("@theTodo").should(
           "not.have.class",
-          "dark:bg-gray-400 bg-gray-400 transition-all"
+          "bg-gray-400 transition-all"
         );
       });
 
