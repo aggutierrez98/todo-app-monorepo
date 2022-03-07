@@ -6,6 +6,7 @@ import "tailwindcss/tailwind.css";
 import "./globals.css"
 
 //TODO: Mejorar rendimiento de la pagina aplicando lo de midudev
+//TODO: Reveer testE2E por el front cambiado
 //TODO: Hacer pagina PWA
 //TODO: Mejorar README.md
 

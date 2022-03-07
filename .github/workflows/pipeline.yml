@@ -113,7 +113,7 @@ jobs:
   #         wait-on: http://localhost:8080
 
   deploy:
-    # needs: [tests_e2e]
+    needs:  [lint, build]
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
