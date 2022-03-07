@@ -6,6 +6,7 @@ import testingRoutes from "../routes/testing.js";
 import dbConnection from "../database/config.js";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
+import expressStaticGzip from "express-static-gzip";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 class Server {
@@ -29,8 +30,15 @@ class Server {
   }
 
   middlewares() {
-    // Para servir estaticos de react app desde el servidor
+    // To accept brotli gzip files to serve
+    this.app.use(
+      expressStaticGzip("../app/build", {
+        enableBrotli: true, // only if you have brotli files too
+      })
+    );
+    // To serve statics from react app
     this.app.use(express.static("../app/build"));
+
     this.app.use(cors());
     this.app.use(json());
   }
@@ -43,7 +51,7 @@ class Server {
     this.app.use(this.paths.todos, todoRoutes);
     this.app.use(this.paths.users, usersRoutes);
 
-    //Controlamos que las rutas de testing solo se puedan acceder en cierto entorno
+    //Testing routes can only be used in testing environment
     if (process.env.NODE_ENV === "test") {
       this.app.use(this.paths.testing, testingRoutes);
     }

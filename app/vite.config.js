@@ -9,6 +9,7 @@ export default defineConfig({
     include: /src\/.*\.jsx?$/,
     exclude: [],
   },
+
   plugins: [react(), viteCompression()],
   root: path.join(__dirname, "src"),
   build: {
@@ -19,6 +20,7 @@ export default defineConfig({
     dir: "output",
     format: "esm",
   },
+  entry: "public/index.html",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -28,7 +30,7 @@ export default defineConfig({
       "@h": path.resolve(__dirname, "./src/hooks"),
     },
   },
-  // server: {
-  //   open: true,
-  // },
+  server: {
+    open: true,
+  },
 });
