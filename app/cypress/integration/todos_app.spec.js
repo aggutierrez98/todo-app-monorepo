@@ -19,12 +19,14 @@ describe("TodosPage", () => {
     it("Dark mode can be enabled", () => {
       cy.get("button[title='Toogle theme']").click();
       cy.get("body").should("have.class", "dark");
-      cy.get("#app").should("have.css", "background-color", "rgb(31, 41, 55)");
+      cy.get("#root").should("have.css", "background-color", "rgb(31, 41, 55)");
     });
 
     describe("UiModals", () => {
       before(() => {
         cy.loginWithTestUser();
+        cy.contains("Load-More");
+
         cy.addTodo({
           title: "cypress-mock-todo",
           description: "test-description",

@@ -8,7 +8,9 @@ function TodoApp() {
     <>
       <UserInfoCard />
 
-      <div className="flex mt-4 w-full sm:w-500 md:w-700 2xl:w-1200 p-1 cellphone:p-5 flex-col ">
+      <div
+        id="app"
+        className="flex mt-4 w-full sm:w-500 md:w-700 2xl:w-1200 p-1 cellphone:p-5 flex-col ">
         <BottonAddTodo />
         <TodoList />
       </div>

@@ -30,11 +30,9 @@ export const AppRouter = () => {
       {isLoading && <LoadingPage />}
 
       <div
-        className={`pt-6 h-full w-full sm:dark:bg-gray-800 
-         overflow-y-scroll overflow-x-hidden pb-8`}
-        id="app"
+        className="pt-6 h-full w-full sm:dark:bg-gray-800 overflow-y-scroll overflow-x-hidden pb-8"
       >
-        <div className="flex flex-col items-center h-full">
+        <div className="flex flex-col items-center h-full pb-12">
 
           <div className="relative flex items-center 2xl:items-start mt-6 mr-5">
             <button

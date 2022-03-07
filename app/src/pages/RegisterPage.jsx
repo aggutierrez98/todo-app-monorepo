@@ -24,7 +24,7 @@ function RegisterPage() {
       {isLoading && <LoadingPage />}
       <div
         className="flex flex-col mx-0 sm:mt-8 sm:mx-2 items-center dark:bg-gray-600 sm:shadow-mh sm:rounded-sm dark:text-white w-full h-full
-          sm:h-auto sm:w-[700px] mt-4"
+          sm:h-auto sm:w-[700px] mb-12"
       >
         <form
           className="mt-8 sm:mt-20 flex flex-col items-start w-4/5 h-4/5"

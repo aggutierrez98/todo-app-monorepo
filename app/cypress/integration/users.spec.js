@@ -1,4 +1,4 @@
-describe.only("Users", () => {
+describe("Users", () => {
   describe("Register tests", () => {
     beforeEach(() => {
       cy.request("POST", "http://localhost:8080/api/testing/resetUsers");

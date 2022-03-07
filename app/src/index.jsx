@@ -5,10 +5,8 @@ import { AppRouter } from "@/router/AppRouter.jsx";
 import "tailwindcss/tailwind.css";
 import "./globals.css"
 
-//TODO: Mejorar rendimiento de la pagina aplicando lo de midudev
-//TODO: Reveer testE2E por el front cambiado
+//TODO: Mejorar rendimiento de la pagina
 //TODO: Hacer pagina PWA
-//TODO: Mejorar README.md
 
 const queryClient = new QueryClient({
   defaultOptions: {
