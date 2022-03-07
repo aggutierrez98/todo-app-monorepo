@@ -20,7 +20,6 @@ export default defineConfig({
     dir: "output",
     format: "esm",
   },
-  entry: "public/index.html",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
