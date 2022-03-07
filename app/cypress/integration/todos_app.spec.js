@@ -112,7 +112,8 @@ describe("TodosPage", () => {
       });
 
       it("Todo can be done", () => {
-        cy.get("div[title='Do todo']").click().as("theTodo");
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(1000).get("div[title='Do todo']").click().as("theTodo");
         cy.get("@theTodo").should("have.class", "bg-gray-400 transition-all");
       });
 
