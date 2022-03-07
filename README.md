@@ -13,7 +13,7 @@ React, Node, MongoDB, Mongoose, Vite, Tailwind, React-hook-form, React-query and
 
 ### Made by: Agustin Gutierrez
 
-## Scrips:
+## Scripts:
 
 ```
 "scripts": {
