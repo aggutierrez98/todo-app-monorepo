@@ -5,7 +5,6 @@ import { AppRouter } from "@/router/AppRouter.jsx";
 import "tailwindcss/tailwind.css";
 import "./globals.css"
 
-//TODO: Mejorar rendimiento de la pagina
 //TODO: Hacer pagina PWA
 
 const queryClient = new QueryClient({
@@ -21,7 +20,7 @@ if (window.Cypress) {
   window.queryClient = queryClient;
 }
 
-ReactDOM.renderToStaticNodeStream()(
+ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <AppRouter />
     <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"} />

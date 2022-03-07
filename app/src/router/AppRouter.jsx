@@ -10,6 +10,7 @@ import { Fallback } from "@c/Fallback";
 import { ErrorBoundary } from "react-error-boundary";
 import darkMode from "@a/dark_mode_black_24dp.svg";
 import lightMode from "@a/light_mode_black_24dp.svg";
+// import { HashRouter } from 'react-router-dom';
 const RegisterPage = lazy(() => import(/* webpackChunkName: "RegisterPage" */"@p/RegisterPage"));
 const LoginPage = lazy(() => import(/* webpackChunkName: "LoginPage" */"@p/LoginPage"));
 const TodoApp = lazy(() => import(/* webpackChunkName: "TodoApp" */"@p/TodoApp"));
@@ -27,11 +28,10 @@ export const AppRouter = () => {
 
   return (
     <ErrorBoundary FallbackComponent={Fallback} onError={errorHandler}>
-      {isLoading && <LoadingPage />}
-
       <div
         className="pt-6 h-full w-full sm:dark:bg-gray-800 overflow-y-scroll overflow-x-hidden pb-8"
       >
+        {isLoading && <LoadingPage />}
         <div className="flex flex-col items-center h-full pb-12">
 
           <div className="relative flex items-center 2xl:items-start mt-6 mr-5">
@@ -39,7 +39,7 @@ export const AppRouter = () => {
               title="Toogle theme"
               onClick={toogleTheme}
               className="2xl:p-2 p-2 w-15 h-15 bg-green-400 rounded-full hover:text-green-400 transition-all dark:bg-green-700 hover:bg-green-700 
-            dark:hover:bg-green-400 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark shadow-sh mr-2"
+                  dark:hover:bg-green-400 focus-visible:outline-custom-light dark:focus-visible:outline-custom-dark shadow-sh mr-2"
             >
               {themeState ? (
                 <img
@@ -60,8 +60,10 @@ export const AppRouter = () => {
             </h1>
           </div>
 
-          <Suspense fallback={<LoadingPage />}>
-            <Router>
+          <Router>
+            <Suspense fallback={<LoadingPage />}>
+
+
               <Switch>
                 <PublicRoute
                   key="/login"
@@ -88,11 +90,12 @@ export const AppRouter = () => {
 
                 <Redirect to="/" />
               </Switch>
-            </Router>
-          </Suspense>
+            </Suspense>
+          </Router>
 
         </div>
       </div>
+
     </ErrorBoundary >
   );
 };
