@@ -29,9 +29,6 @@ module.exports = {
         "40px": "48px !important",
         "20px": "28px !important",
       },
-      fontFamily: {
-        poppins: "Poppins",
-      },
       backgroundColor: {
         over: " rgba(0, 0, 0, .3)",
       },
@@ -58,31 +55,4 @@ module.exports = {
       opacity: ["disabled"],
     },
   },
-  plugins: [
-    plugin(({ addUtilities }) => {
-      addUtilities({
-        ".scrollbar-custom::-webkit-scrollbar": {
-          " -webkit-appearance": "none",
-          "margin-right": "2px",
-        },
-        ".scrollbar-custom::-webkit-scrollbar:vertical": {
-          width: "7px",
-        },
-        ".scrollbar-custom::-webkit-scrollbar:horizontal": {
-          height: "10px",
-        },
-        ".scrollbar-custom::-webkit-scrollbar-button": {
-          display: "none",
-        },
-        ".scrollbar-custom::-webkit-scrollbar-thumb": {
-          "background-color": "rgba(120, 122, 145, 0.5)",
-          "border-radius": "20px",
-        },
-        ".scrollbar-custom::-webkit-scrollbar-track": {
-          "border-radius": "10px",
-          cursor: "pointer",
-        },
-      });
-    }),
-  ],
 };

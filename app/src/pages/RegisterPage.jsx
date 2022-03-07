@@ -1,35 +1,30 @@
 import { useRegister } from "@/api/users";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { LoadingPage } from "@p/LoadingPage";
 
 const emailPattern =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-export const RegisterPage = () => {
+function RegisterPage() {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
     setError,
   } = useForm();
-  const { mutate: registerUser, isSuccess } = useRegister(setError);
+  const { mutate: registerUser, isSuccess, isLoading } = useRegister(setError);
 
   const onSubmit = async (user) => {
     registerUser(user);
   };
 
   return (
-    <div
-      className="p-12 h-screen w-screen font-poppins dark:bg-gray-600 sm:dark:bg-gray-800 overflow-y-scroll overflow-x-hidden scrollbar-custom flex 
-      flex-col items-center justify-center"
-      id="app"
-    >
-      <h2 className="dark:text-white text-[30px] sm:text-[50px] text-gray-800 ">
-        Register Page
-      </h2>
+    <>
+      {isLoading && <LoadingPage />}
       <div
-        className="flex flex-col m-0 sm:m-2 items-center dark:bg-gray-600 sm:shadow-mh rounded-sm dark:text-white w-screen h-screen 
-          sm:h-auto sm:w-[700px]"
+        className="flex flex-col mx-0 sm:mt-8 sm:mx-2 items-center dark:bg-gray-600 sm:shadow-mh sm:rounded-sm dark:text-white w-full h-full
+          sm:h-auto sm:w-[700px] mt-4"
       >
         <form
           className="mt-8 sm:mt-20 flex flex-col items-start w-4/5 h-4/5"
@@ -181,6 +176,8 @@ export const RegisterPage = () => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
+
+export default RegisterPage

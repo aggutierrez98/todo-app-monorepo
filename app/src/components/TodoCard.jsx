@@ -90,7 +90,7 @@ const InitTodoCard = ({ info }) => {
         }}
         className="absolute p-8 sm:p-15 overflow-auto outline-0 bg-white inset-auto top-2/4 left-2/4 mr--2/4 opacity-100 mr--50 -translate-y-2/4 
           -translate-x-2/4 rounded-md dark:bg-gray-800 focus-visible:outline-none w-4/5 sm:w-auto"
-        overlayClassName="fixed inset-0 bg-over font-poppins animate-fadeIn z-20"
+        overlayClassName="fixed inset-0 bg-over animate-fadeIn z-20"
       >
         {renderModal.delete ? (
           <ConfirmDelete
