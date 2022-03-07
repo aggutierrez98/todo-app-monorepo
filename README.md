@@ -3,7 +3,7 @@
 # Todo App
 
 This repository is a monorepo that contains both front-end and back-end directory whose dependencies are shared with the main directory.
-The main directory has Prettier and Eslint configurations
+The main directory has Prettier, Eslint and Husky configurations
 
 In this app you can add, edit, delete, do and undo todos.
 
