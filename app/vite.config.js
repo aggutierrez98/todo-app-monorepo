@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
   esbuild: {
@@ -8,7 +9,7 @@ export default defineConfig({
     include: /src\/.*\.jsx?$/,
     exclude: [],
   },
-  plugins: [react()],
+  plugins: [react(), viteCompression()],
   root: path.join(__dirname, "src"),
   build: {
     outDir: path.join(__dirname, "build"),
