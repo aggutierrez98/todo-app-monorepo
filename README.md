@@ -36,4 +36,4 @@ Deployment is automated with Github Actions in a general monorepo deployment pip
 
 ### Demo
 
-[Todo App](https://todo-app-aggutierrez.herokuapp.com/e)
+[Todo App](https://todo-app-aggutierrez.herokuapp.com)

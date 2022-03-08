@@ -5,8 +5,6 @@ import { AppRouter } from "@/router/AppRouter.jsx";
 import "tailwindcss/tailwind.css";
 import "./globals.css"
 
-//TODO: Hacer pagina PWA
-
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
