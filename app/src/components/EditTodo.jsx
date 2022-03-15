@@ -1,10 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useEditTodos } from "@/api/todos";
 
-export const EditTodo = ({
-  info: { title, description, _id: id },
-  cancel,
-}) => {
+export const EditTodo = ({ info: { title, description, _id: id }, cancel }) => {
   const {
     register,
     handleSubmit,
@@ -18,6 +15,8 @@ export const EditTodo = ({
     cancel();
   };
 
+  console.log(errors);
+
   return (
     <>
       <form
@@ -26,49 +25,69 @@ export const EditTodo = ({
       >
         <div className="relative w-full mb-16">
           <input
-            className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-blue-600  ${errors.title
-              ? "focus-visible:border-red-600 border-red-600 border-b-2"
-              : ""
-              } rounded-sm dark:bg-gray-800 dark:text-white`}
+            className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 focus-visible:border-blue-600  ${
+              errors.title
+                ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                : ""
+            } rounded-sm dark:bg-gray-800 dark:text-white`}
             {...register("title", {
-              minLength: 6,
-              maxLength: 30,
+              required: {
+                value: true,
+                message: "Title should be more than 6 characters",
+              },
+              minLength: {
+                value: 6,
+                message: "Title should be more than 6 characters",
+              },
+              maxLength: {
+                value: 30,
+                message: "Title should be less than 30 characters",
+              },
             })}
             placeholder="Title..."
             autoComplete="off"
             defaultValue={title}
           />
-          {(errors.title?.type === "minLength" ||
-            errors.title?.type === "maxLength") && (
-              <p className="absolute top-10 text-red-600 p-4">
-                Title should have more than 6 and less than 30 characters
-              </p>
-            )}
+          {errors.title && (
+            <p className="absolute top-30 text-red-600 p-4 pt-1">
+              {errors.title.message}
+            </p>
+          )}
         </div>
 
         <div className="relative w-full mb-20">
           <textarea
             id="textarea"
             type="text"
-            className={` w-full resize-none h-48 p-4 focus-visible:outline-none border-transparent border-2 rounded-sm focus-visible:border-2 focus-visible:border-blue-600 ${errors.description
-              ? "focus-visible:border-red-600 border-red-600 border-b-2"
-              : ""
-              } dark:bg-gray-800 dark:text-white scrollbar-custom`}
+            className={` w-full resize-none h-48 p-4 focus-visible:outline-none border-transparent border-2 rounded-sm focus-visible:border-2 focus-visible:border-blue-600 ${
+              errors.description
+                ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                : ""
+            } dark:bg-gray-800 dark:text-white scrollbar-custom`}
             {...register("description", {
-              minLength: 10,
-              maxLength: 285,
+              required: {
+                value: true,
+                message: "Description should be more than 10 characters",
+              },
+              minLength: {
+                value: 10,
+                message: "Description should be more than 10 characters",
+              },
+              maxLength: {
+                value: 285,
+                message: "Description should be less than 285 characters",
+              },
             })}
             placeholder="Description..."
             autoComplete="off"
             maxLength="288"
             defaultValue={description}
           />
-          {(errors.description?.type === "minLength" ||
-            errors.description?.type === "maxLength") && (
-              <p className="absolute top-30 text-red-600 p-4 pt-1">
-                Description should have more than 10 and less than 285 characters
-              </p>
-            )}
+          {errors.description && (
+            <p className="absolute top-30 text-red-600 p-4 pt-1">
+              {errors.description.message}
+            </p>
+          )}
         </div>
 
         <button

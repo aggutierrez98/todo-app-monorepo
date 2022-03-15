@@ -25,57 +25,67 @@ export const AgregarTodo = ({ closeModal }) => {
         <div className="relative w-full mb-16">
           <input
             className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${errors.title
-                ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                : ""
-              } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${
+               errors.title
+                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                 : ""
+             } dark:bg-gray-800 dark:text-white`}
             {...register("title", {
-              required: true,
-              minLength: 6,
-              maxLength: 30,
+              required: {
+                value: true,
+                message: "Title is required",
+              },
+              minLength: {
+                value: 6,
+                message: "Title should be more than 6 characters",
+              },
+              maxLength: {
+                value: 30,
+                message: "Title should be less than 30 characters",
+              },
             })}
             placeholder="Title..."
             autoComplete="off"
           />
-          {errors.title?.type === "required" && (
-            <p className="absolute top-10 text-red-600 p-4">Title required</p>
+          {errors.title && (
+            <p className="absolute top-10 text-red-600 p-4">
+              {errors.title.message}
+            </p>
           )}
-          {(errors.title?.type === "minLength" ||
-            errors.title?.type === "maxLength") && (
-              <p className="absolute top-10 text-red-600 p-4">
-                Title should have more than 6 and less than 30 characters
-              </p>
-            )}
         </div>
         <div className="relative w-full mb-20">
           <textarea
             id="textarea"
             type="text"
             className={` w-full resize-none h-48 p-4 focus-visible:outline-none border-transparent border-2 rounded-sm focus-visible:border-2 
-              focus-visible:border-green-600 ${errors.description
-                ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                : ""
+              focus-visible:border-green-600 ${
+                errors.description
+                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                  : ""
               } dark:bg-gray-800 dark:text-white scrollbar-custom`}
             {...register("description", {
-              required: true,
-              minLength: 10,
-              maxLength: 285,
+              required: {
+                value: true,
+                message: "Description is required",
+              },
+              minLength: {
+                value: 10,
+                message: "Description should be more than 10 characters",
+              },
+              maxLength: {
+                value: 285,
+                message: "Description should be less than 285 characters",
+              },
             })}
             placeholder="Description..."
             autoComplete="off"
             maxLength="288"
           />
-          {errors.description?.type === "required" && (
+          {errors.description && (
             <p className="absolute top-30 text-red-600 p-4 pt-1">
-              Description required
+              {errors.description.message}
             </p>
           )}
-          {(errors.description?.type === "minLength" ||
-            errors.description?.type === "maxLength") && (
-              <p className="absolute top-30 text-red-600 p-4 pt-1">
-                Description should have more than 10 and less than 285 characters
-              </p>
-            )}
         </div>
         <button
           className="disabled:bg-gray-500 text-lg uppercase p-2 text-white bg-green-600 rounded h-10 w-40 hover:bg-green-400 cursor-pointer transition-all 

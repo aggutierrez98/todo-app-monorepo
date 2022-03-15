@@ -33,91 +33,99 @@ function RegisterPage() {
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${errors.name
-                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                  : ""
-                } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${
+               errors.name
+                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                 : ""
+             } dark:bg-gray-800 dark:text-white`}
               {...register("name", {
-                required: true,
-                minLength: 6,
-                maxLength: 30,
+                required: {
+                  value: true,
+                  message: "Name is required",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Name should be more than 6 characters",
+                },
+                maxLength: {
+                  value: 30,
+                  message: "Name should be less than 30 characters",
+                },
               })}
               placeholder="Name..."
               autoComplete="off"
             />
-            {errors.name?.type === "required" && (
-              <p className="absolute top-10 text-red-600 dark:text-red-500 p-4">
-                Name is required
+            {errors.name && (
+              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
+                {" "}
+                {errors.name.message}
               </p>
             )}
-            {(errors.name?.type === "minLength" ||
-              errors.name?.type === "maxLength") && (
-                <p className="absolute top-10 text-red-600 dark:text-red-500 p-4">
-                  Name should be more than 6 and less than 30 characters
-                </p>
-              )}
           </div>
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${errors.lastName
-                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                  : ""
-                } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${
+               errors.lastName
+                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                 : ""
+             } dark:bg-gray-800 dark:text-white`}
               {...register("lastName", {
-                required: true,
-                minLength: 6,
-                maxLength: 30,
+                required: {
+                  value: true,
+                  message: "Lastname is required",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Lastname should be more than 6 characters",
+                },
+                maxLength: {
+                  value: 30,
+                  message: "Lastname should be less than 30 characters",
+                },
               })}
               placeholder="Lastname..."
               autoComplete="off"
             />
-            {errors.lastName?.type === "required" && (
+            {errors.lastName && (
               <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Lastname is required
+                {" "}
+                {errors.lastName.message}
               </p>
             )}
-            {(errors.lastName?.type === "minLength" ||
-              errors.lastName?.type === "maxLength") && (
-                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                  Lastname should be more than 6 and less than 30 characters
-                </p>
-              )}
           </div>
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${errors.email
-                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                  : ""
-                } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${
+               errors.email
+                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                 : ""
+             } dark:bg-gray-800 dark:text-white`}
               {...register("email", {
-                required: true,
-                minLength: 6,
-                maxLength: 30,
-                pattern: emailPattern,
+                required: {
+                  value: true,
+                  message: "Email is required",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Email should be more than 6 characters",
+                },
+                maxLength: {
+                  value: 30,
+                  message: "Email should be less than 30 characters",
+                },
+                pattern: {
+                  value: emailPattern,
+                  message: "Email should be valid",
+                },
               })}
               placeholder="Email..."
               autoComplete="off"
             />
-            {errors.email?.type === "required" && (
+            {errors.email && (
               <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Email is required
-              </p>
-            )}
-            {(errors.email?.type === "minLength" ||
-              errors.email?.type === "maxLength") && (
-                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                  Email should be more than 6 and less than 30 characters
-                </p>
-              )}
-            {errors.email?.type === "pattern" && (
-              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Email should be valid
-              </p>
-            )}
-            {errors.email?.type === "credentials" && (
-              <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
+                {" "}
                 {errors.email.message}
               </p>
             )}
@@ -125,30 +133,34 @@ function RegisterPage() {
           <div className="relative w-full mb-12 sm:mb-20">
             <input
               className={`w-full h-12 p-4 border-b-2 border-transparent focus-visible:outline-none focus-visible:border-b-2 rounded-sm
-             focus-visible:border-green-600  ${errors.password
-                  ? "focus-visible:border-red-600 border-red-600 border-b-2"
-                  : ""
-                } dark:bg-gray-800 dark:text-white`}
+             focus-visible:border-green-600  ${
+               errors.password
+                 ? "focus-visible:border-red-600 border-red-600 border-b-2"
+                 : ""
+             } dark:bg-gray-800 dark:text-white`}
               {...register("password", {
-                required: true,
-                minLength: 6,
-                maxLength: 30,
+                required: {
+                  value: true,
+                  message: "Password is required",
+                },
+                minLength: {
+                  value: 6,
+                  message: "Password should be more than 6 characters",
+                },
+                maxLength: {
+                  value: 15,
+                  message: "Password should be less than 15 characters",
+                },
               })}
               type="password"
               placeholder="Password..."
               autoComplete="off"
             />
-            {errors.password?.type === "required" && (
+            {errors.password && (
               <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                Password is required
+                {errors.password.message}
               </p>
             )}
-            {(errors.password?.type === "minLength" ||
-              errors.password?.type === "maxLength") && (
-                <p className="absolute top-30 text-red-600 dark:text-red-500 p-4 pt-1">
-                  Password should be more than 6 and less than 30 characters
-                </p>
-              )}
           </div>
           <button
             className="disabled:bg-gray-500 text-lg uppercase p-2 text-white bg-green-600 rounded h-10 w-40 hover:bg-green-400 cursor-pointer 
@@ -178,6 +190,6 @@ function RegisterPage() {
       </div>
     </>
   );
-};
+}
 
-export default RegisterPage
+export default RegisterPage;
