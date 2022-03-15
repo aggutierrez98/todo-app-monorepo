@@ -28,22 +28,10 @@ describe("Users", () => {
       cy.get("button[title='Register button']").click();
 
       cy.get("p")
-        .should(
-          "contain",
-          "Name should be more than 6 and less than 30 characters"
-        )
-        .should(
-          "contain",
-          "Lastname should be more than 6 and less than 30 characters"
-        )
-        .should(
-          "contain",
-          "Email should be more than 6 and less than 30 characters"
-        )
-        .should(
-          "contain",
-          "Password should be more than 6 and less than 30 characters"
-        );
+        .should("contain", "Name should be more than 6 characters")
+        .should("contain", "Lastname should be more than 6 characters")
+        .should("contain", "Email should be more than 6 characters")
+        .should("contain", "Password should be more than 6 characters");
 
       cy.get("[placeholder='Email...']").type("6");
       cy.get("p").should("contain", "Email should be valid");
@@ -129,14 +117,8 @@ describe("Users", () => {
       cy.get("button[title='Login button']").click();
 
       cy.get("p")
-        .should(
-          "contain",
-          "Email should be more than 6 and less than 30 characters"
-        )
-        .should(
-          "contain",
-          "Password should be more than 6 and less than 30 characters"
-        );
+        .should("contain", "Email should be more than 6 characters")
+        .should("contain", "Password should be more than 6 characters");
 
       cy.get("[placeholder='Email...']").type("6");
       cy.get("p").should("contain", "Email should be valid");

@@ -71,8 +71,8 @@ describe("TodosPage", () => {
         cy.get("form").within(() => {
           cy.get("button[title='Add todo']").click();
           cy.get("p")
-            .should("contain", "Title required")
-            .should("contain", "Description required");
+            .should("contain", "Title is required")
+            .should("contain", "Description is required");
         });
       });
 
