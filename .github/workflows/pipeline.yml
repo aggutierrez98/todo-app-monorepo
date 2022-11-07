@@ -10,6 +10,7 @@ on:
 env:
   MONGODB_TEST_CNN: ${{ secrets.MONGODB_TEST_CNN }}
   SECRETORPRIVATEKEY: ${{ secrets.SECRETORPRIVATEKEY }}
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
   avoid_reduncy:
@@ -98,8 +99,6 @@ jobs:
         with:
           name: build
           path: ./app/build
-      # - name: Prepare E2E Tests
-      #   run: npm run test &
       - name: E2E Tests
         uses: cypress-io/github-action@v3
         with:
@@ -107,7 +106,6 @@ jobs:
           start: npm run start-test
           wait-on: http://localhost:8080
           install: false
-          # working-directory: ./app
 
   deploy:
     needs: [tests_e2e]
@@ -117,7 +115,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      # - name: Deploy to fly
-      #   if: ${{ github.event_name == 'push' }}
+      - name: Deploy to fly
+        if: ${{ github.event_name == 'push' }}
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
