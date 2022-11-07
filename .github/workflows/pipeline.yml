@@ -73,9 +73,8 @@ jobs:
           cache-dependency-path: |
             ./app/package-lock.json
             ./api/package-lock.json
-            ./package-lock.json
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
       - uses: actions/upload-artifact@v2

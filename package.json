@@ -14,7 +14,7 @@
   "scripts": {
     "lint": "eslint ./api ./app --fix",
     "prettier": "prettier --write .",
-    "prepare": "husky install",
+    "prepare": "node -e \"if (process.env.NODE_ENV !== 'production'){process.exit(1)} \" || husky install",
     "dev:api": "npm run build && npm run dev -w api",
     "dev:app": "npm run dev -w app",
     "build": "npm run build -w app",
