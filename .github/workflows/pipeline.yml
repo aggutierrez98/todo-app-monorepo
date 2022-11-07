@@ -104,9 +104,9 @@ jobs:
       - name: Prepare E2E Tests
         run: npm run test &
       - name: E2E Tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v3
         with:
-          working-directory: ./app
+          # working-directory: ./app
           command: npm run test:e2e
           wait-on: http://localhost:8080
 
