@@ -13,7 +13,7 @@ env:
 
 jobs:
   avoid_reduncy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Redundant Builds
         uses: styfle/cancel-workflow-action@0.11.0
@@ -21,7 +21,7 @@ jobs:
           access_token: ${{ github.token }}
 
   install:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -38,7 +38,7 @@ jobs:
 
   lint:
     needs: install
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -57,10 +57,7 @@ jobs:
 
   build:
     needs: install
-    # defaults:
-    #   run:
-    #     working-directory: ./app
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -83,7 +80,7 @@ jobs:
 
   tests_e2e:
     needs: [lint, build]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -106,23 +103,20 @@ jobs:
       - name: E2E Tests
         uses: cypress-io/github-action@v3
         with:
-          # working-directory: ./app
           command: npm run test:e2e
           wait-on: http://localhost:8080
+          install: false
+          working-directory: ./app
 
   deploy:
     needs: [tests_e2e]
-    runs-on: ubuntu-18.04
+    name: Deploy app
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Deploy to heroku
-        if: ${{ github.event_name == 'push' }}
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP}}
-          heroku_email: ${{secrets.HEROKU_API_EMAIL}}
-          healthcheck: "https://${{secrets.HEROKU_APP}}.herokuapp.com/healt"
-          rollbackonhealthcheckfailed: true
+      # - name: Deploy to fly
+      #   if: ${{ github.event_name == 'push' }}
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only
