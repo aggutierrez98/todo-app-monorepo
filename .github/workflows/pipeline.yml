@@ -74,7 +74,7 @@ jobs:
             ./app/package-lock.json
             ./api/package-lock.json
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       - name: Build
         run: npm run build
       - uses: actions/upload-artifact@v2
