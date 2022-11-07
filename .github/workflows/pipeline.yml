@@ -23,10 +23,10 @@ jobs:
   install:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           cache: npm
           node-version: "16"
@@ -40,10 +40,10 @@ jobs:
     needs: install
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           cache: npm
           node-version: "16"
@@ -62,10 +62,10 @@ jobs:
     #     working-directory: ./app
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           cache: npm
           node-version: "16"
@@ -85,10 +85,10 @@ jobs:
     needs: [lint, build]
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           cache: npm
           node-version: "16"
@@ -96,8 +96,8 @@ jobs:
             ./app/package-lock.json
             ./api/package-lock.json
       - name: Install dependencies
-        # working-directory: ./api
         run: npm ci
+        # working-directory: ./api
       - uses: actions/download-artifact@v2
         with:
           name: build
@@ -116,7 +116,7 @@ jobs:
     needs: [tests_e2e]
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Deploy to heroku
