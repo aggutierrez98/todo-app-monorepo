@@ -57,9 +57,9 @@ jobs:
 
   build:
     needs: install
-    defaults:
-      run:
-        working-directory: ./app
+    # defaults:
+    #   run:
+    #     working-directory: ./app
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -74,12 +74,12 @@ jobs:
             ./api/package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Build
-        run: npm run build
-      - uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: ./app/build
+      # - name: Build
+      #   run: npm run build
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: build
+      #     path: ./app/build
 
   tests_e2e:
     needs: [lint, build]
