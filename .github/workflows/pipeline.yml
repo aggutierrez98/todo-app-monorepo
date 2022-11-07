@@ -96,7 +96,7 @@ jobs:
             ./app/package-lock.json
             ./api/package-lock.json
       - name: Install dependencies
-        working-directory: ./api
+        # working-directory: ./api
         run: npm ci
       - uses: actions/download-artifact@v2
         with:
