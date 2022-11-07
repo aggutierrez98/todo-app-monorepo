@@ -107,7 +107,7 @@ jobs:
           start: npm run test
           wait-on: http://localhost:8080
           install: false
-          working-directory: ./app
+          # working-directory: ./app
 
   deploy:
     needs: [tests_e2e]
