@@ -98,12 +98,13 @@ jobs:
         with:
           name: build
           path: ./app/build
-      - name: Prepare E2E Tests
-        run: npm run test &
+      # - name: Prepare E2E Tests
+      #   run: npm run test &
       - name: E2E Tests
         uses: cypress-io/github-action@v3
         with:
           command: npm run test:e2e
+          start: npm run test
           wait-on: http://localhost:8080
           install: false
           working-directory: ./app
