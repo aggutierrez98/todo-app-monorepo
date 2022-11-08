@@ -101,7 +101,7 @@ jobs:
 
   deploy:
     # needs: [tests_e2e]
-     needs: [lint, build]
+    needs: [lint, build]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
