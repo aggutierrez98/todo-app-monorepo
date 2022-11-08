@@ -11,6 +11,7 @@ env:
   MONGODB_TEST_CNN: ${{ secrets.MONGODB_TEST_CNN }}
   SECRETORPRIVATEKEY: ${{ secrets.SECRETORPRIVATEKEY }}
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  NPM_CONFIG_PRODUCTION: false
 
 jobs:
   avoid_reduncy:
@@ -114,5 +115,3 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: chmod +x /usr/bin/*
       - run: flyctl deploy --remote-only
-    env:
-      NPM_CONFIG_PRODUCTION: false
