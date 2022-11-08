@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: "16"
+          node-version: 18
           cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: "16"
+          node-version: 18
           cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
@@ -62,7 +62,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           cache: npm
-          node-version: "16"
+          node-version: 18
           cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
@@ -73,34 +73,35 @@ jobs:
           name: build
           path: ./app/build
 
-  tests_e2e:
-    needs: [lint, build]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          cache: npm
-          node-version: "16"
-          cache-dependency-path: package-lock.json
-      - name: Install dependencies
-        run: npm ci
-      - uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: ./app/build
-      - name: E2E Tests
-        uses: cypress-io/github-action@v3
-        with:
-          command: npm run test:e2e
-          start: npm run start-test
-          wait-on: http://localhost:8080
-          install: false
+  # tests_e2e:
+  #   needs: [lint, build]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         cache: npm
+  #         node-version: 18
+  #         cache-dependency-path: package-lock.json
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - uses: actions/download-artifact@v3
+  #       with:
+  #         name: build
+  #         path: ./app/build
+  #     - name: E2E Tests
+  #       uses: cypress-io/github-action@v3
+  #       with:
+  #         command: npm run test:e2e
+  #         start: npm run start-test
+  #         wait-on: http://localhost:8080
+  #         install: false
 
   deploy:
-    needs: [tests_e2e]
+    # needs: [tests_e2e]
+     needs: [lint, build]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
