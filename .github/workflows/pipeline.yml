@@ -12,9 +12,6 @@ env:
   SECRETORPRIVATEKEY: ${{ secrets.SECRETORPRIVATEKEY }}
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
-container:
-  options: --user root
-
 jobs:
   # avoid_reduncy:
   #   runs-on: ubuntu-latest
@@ -129,6 +126,9 @@ jobs:
   deploy2:
     # needs: [tests_e2e]
     runs-on: ubuntu-latest
+    container:
+      # image: owasp/zap2docker-stable
+      options: --user root
     if: ${{ github.event_name == 'push' }}
     steps:
       - uses: actions/checkout@v3
