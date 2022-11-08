@@ -11,10 +11,6 @@ env:
   MONGODB_TEST_CNN: ${{ secrets.MONGODB_TEST_CNN }}
   SECRETORPRIVATEKEY: ${{ secrets.SECRETORPRIVATEKEY }}
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-  NPM_CONFIG_LOGLEVEL: error
-  NODE_VERBOSE: false
-  NODE_ENV: production
-  NODE_MODULES_CACHE: true
 
 jobs:
   # avoid_reduncy:
@@ -136,4 +132,9 @@ jobs:
         with:
           fetch-depth: 0
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
+      - run: sudo flyctl deploy --remote-only
+    # env:
+    #   NPM_CONFIG_LOGLEVEL = error
+    #   NODE_VERBOSE=false
+    #   NODE_ENV=production
+    #   NODE_MODULES_CACHE=true
