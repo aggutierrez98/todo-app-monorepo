@@ -127,7 +127,7 @@ jobs:
     # needs: [tests_e2e]
     runs-on: ubuntu-latest
     container:
-      # image: owasp/zap2docker-stable
+      image: owasp/zap2docker-stable
       options: --user root
     if: ${{ github.event_name == 'push' }}
     steps:
