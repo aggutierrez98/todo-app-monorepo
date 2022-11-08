@@ -108,6 +108,22 @@ jobs:
   #         install: false
 
   deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Deploy to heroku
+        if: ${{ github.event_name == 'push' }}
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP}}
+          heroku_email: ${{secrets.HEROKU_API_EMAIL}}
+          healthcheck: "https://${{secrets.HEROKU_APP}}.herokuapp.com/healt"
+          rollbackonhealthcheckfailed: true
+
+  deploy:
     # needs: [tests_e2e]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
