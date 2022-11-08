@@ -31,9 +31,7 @@ jobs:
         with:
           cache: npm
           node-version: "16"
-          cache-dependency-path: |
-            ./app/package-lock.json
-            ./api/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
 
@@ -48,9 +46,7 @@ jobs:
         with:
           cache: npm
           node-version: "16"
-          cache-dependency-path: |
-            ./app/package-lock.json
-            ./api/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
       - name: Lint
@@ -67,9 +63,7 @@ jobs:
         with:
           cache: npm
           node-version: "16"
-          cache-dependency-path: |
-            ./app/package-lock.json
-            ./api/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
       - name: Build
@@ -90,9 +84,7 @@ jobs:
         with:
           cache: npm
           node-version: "16"
-          cache-dependency-path: |
-            ./app/package-lock.json
-            ./api/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
       - uses: actions/download-artifact@v3
