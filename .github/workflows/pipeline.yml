@@ -12,6 +12,9 @@ env:
   SECRETORPRIVATEKEY: ${{ secrets.SECRETORPRIVATEKEY }}
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
+container:
+  options: --user root
+
 jobs:
   # avoid_reduncy:
   #   runs-on: ubuntu-latest
@@ -132,7 +135,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: sudo flyctl deploy --remote-only
+      - run: flyctl deploy --remote-only
     # env:
     #   NPM_CONFIG_LOGLEVEL = error
     #   NODE_VERBOSE=false
