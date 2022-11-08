@@ -114,3 +114,5 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: chmod +x /usr/bin/*
       - run: flyctl deploy --remote-only
+    env:
+      NPM_CONFIG_PRODUCTION: false
