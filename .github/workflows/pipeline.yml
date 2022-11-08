@@ -113,4 +113,4 @@ jobs:
           fetch-depth: 0
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: chmod +x /usr/bin/*
-      - run: NPM_CONFIG_PRODUCTION=false && flyctl deploy --remote-only
+      - run: NPM_CONFIG_PRODUCTION=false flyctl deploy --remote-only
