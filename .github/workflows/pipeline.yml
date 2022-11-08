@@ -135,6 +135,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: chmod +x /usr/bin/*
       - run: flyctl deploy --remote-only
     # env:
     #   NPM_CONFIG_LOGLEVEL = error
