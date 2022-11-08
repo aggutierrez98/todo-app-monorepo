@@ -28,7 +28,7 @@
     "cypress": "^9.2.0",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19",
-    "vite": "^2.6.4",
+    "vite": "2.9.12",
     "vite-plugin-compression": "^0.5.1"
   }
 }
