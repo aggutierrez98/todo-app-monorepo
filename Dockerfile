@@ -13,8 +13,6 @@ RUN volta install node@${NODE_VERSION}
 RUN mkdir /app
 WORKDIR /app
 
-ENV NODE_ENV production
-
 COPY . .
 
 RUN npm install && npm run build
