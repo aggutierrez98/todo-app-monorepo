@@ -35,43 +35,43 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-  lint:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          cache: npm
-          node-version: 18
-          cache-dependency-path: package-lock.json
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npm run lint
+  # lint:
+  #   needs: install
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         cache: npm
+  #         node-version: 18
+  #         cache-dependency-path: package-lock.json
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Lint
+  #       run: npm run lint
 
-  build:
-    needs: install
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          cache: npm
-          node-version: 18
-          cache-dependency-path: package-lock.json
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: ./app/build
+  # build:
+  #   needs: install
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         cache: npm
+  #         node-version: 18
+  #         cache-dependency-path: package-lock.json
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: Build
+  #       run: npm run build
+  #     - uses: actions/upload-artifact@v3
+  #       with:
+  #         name: build
+  #         path: ./app/build
 
   # tests_e2e:
   #   needs: [lint, build]
@@ -101,7 +101,7 @@ jobs:
 
   deploy:
     # needs: [tests_e2e]
-    needs: [lint, build]
+    needs: install
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
     steps:
