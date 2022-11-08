@@ -123,7 +123,7 @@ jobs:
           healthcheck: "https://${{secrets.HEROKU_APP}}.herokuapp.com/healt"
           rollbackonhealthcheckfailed: true
 
-  deploy:
+  deploy2:
     # needs: [tests_e2e]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
