@@ -109,5 +109,5 @@ jobs:
         with:
           fetch-depth: 0
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: chmod +x /usr/bin/node
+      - run: chmod +x /usr/bin/env
       - run: flyctl deploy --remote-only
