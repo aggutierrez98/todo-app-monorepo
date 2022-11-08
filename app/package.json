@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "serve": "vite preview",
-    "build": "npx vite build --emptyOutDir",
+    "build": "vite build --emptyOutDir",
     "cypress:open": "cypress open",
     "test:e2e": "npx cypress run"
   },

@@ -16,27 +16,27 @@ env:
   NODE_ENV: production
 
 jobs:
-  avoid_reduncy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Cancel Previous Redundant Builds
-        uses: styfle/cancel-workflow-action@0.11.0
-        with:
-          access_token: ${{ github.token }}
+  # avoid_reduncy:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Cancel Previous Redundant Builds
+  #       uses: styfle/cancel-workflow-action@0.11.0
+  #       with:
+  #         access_token: ${{ github.token }}
 
-  install:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v3
-        with:
-          cache: npm
-          node-version: 18
-          cache-dependency-path: package-lock.json
-      - name: Install dependencies
-        run: npm ci
+  # install:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         cache: npm
+  #         node-version: 18
+  #         cache-dependency-path: package-lock.json
+  #     - name: Install dependencies
+  #       run: npm ci
 
   # lint:
   #   needs: install
@@ -104,7 +104,7 @@ jobs:
 
   deploy:
     # needs: [tests_e2e]
-    needs: install
+    # needs: install
     runs-on: ubuntu-latest
     container:
       image: owasp/zap2docker-stable
