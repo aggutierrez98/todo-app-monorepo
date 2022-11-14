@@ -5,13 +5,13 @@
 This repository is a monorepo that contains both front-end and back-end directory whose dependencies are shared with the main directory.
 The main directory has Prettier, Eslint and Husky configurations
 
-In this app you can add, edit, delete, do and undo todos.
-
 ## Made with
 
 React, Node, MongoDB, Mongoose, Vite, Tailwind, React-hook-form, React-query and Cypress
 
 ### Made by: Agustin Gutierrez
+
+## In this app you can add, edit, delete, do and undo todos
 
 ## Scripts
 
@@ -29,6 +29,52 @@ React, Node, MongoDB, Mongoose, Vite, Tailwind, React-hook-form, React-query and
     "test:e2e": "npm run test:e2e -w app"
   },
 ```
+
+## Installation & Set Up
+
+1. Install project dependecies
+
+   ```sh
+   npm install
+   ```
+
+2. Start the client development server
+
+   ```sh
+   npm dev:app
+   ```
+
+3. Start the api development server
+
+   ```sh
+   npm dev:api
+   ```
+
+4. Start the client development server
+
+   ```sh
+   npm dev:app
+   ```
+
+## For automated testing
+
+1. Prepare and start server for testing
+
+   ```sh
+   npm run start-test
+   ```
+
+2. Run tests with cypress
+
+   ```sh
+   npm run cypress
+   ```
+
+3. If you want headless tests
+
+   ```sh
+   npm run test:e2e
+   ```
 
 ## Deployment
 
