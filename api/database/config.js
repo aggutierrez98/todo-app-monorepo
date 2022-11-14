@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Error } from "mongoose";
 
 const dbConnection = async () => {
   const { MONGODB_CNN, MONGODB_TEST_CNN, NODE_ENV } = process.env;
@@ -15,7 +15,8 @@ const dbConnection = async () => {
       console.log("Connected to MongoDB");
     })
     .catch((error) => {
-      console.log("Error in connection to mongoDB: ", error);
+      console.log(error);
+      throw new Error("Error in connection to mongoDB ", error);
     });
 };
 
