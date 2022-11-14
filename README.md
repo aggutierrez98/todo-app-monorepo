@@ -1,21 +1,21 @@
-[![Deplyment Pipeline](https://github.com/aggutierrez98/todo-app-monorepo/actions/workflows/pipeline.yml/badge.svg)](https://github.com/aggutierrez98/todo-app-monorepo/actions/workflows/pipeline.yml)
-
 # Todo App
+
+[![Deplyment Pipeline](https://github.com/aggutierrez98/todo-app-monorepo/actions/workflows/pipeline.yml/badge.svg)](https://github.com/aggutierrez98/todo-app-monorepo/actions/workflows/pipeline.yml)
 
 This repository is a monorepo that contains both front-end and back-end directory whose dependencies are shared with the main directory.
 The main directory has Prettier, Eslint and Husky configurations
 
 In this app you can add, edit, delete, do and undo todos.
 
-### Made with:
+## Made with
 
 React, Node, MongoDB, Mongoose, Vite, Tailwind, React-hook-form, React-query and Cypress
 
 ### Made by: Agustin Gutierrez
 
-## Scripts:
+## Scripts
 
-```
+```json
 "scripts": {
     "lint": "eslint ./api ./app --fix",
     "prettier": "prettier --write .",
@@ -30,7 +30,7 @@ React, Node, MongoDB, Mongoose, Vite, Tailwind, React-hook-form, React-query and
   },
 ```
 
-## Deployment:
+## Deployment
 
 Deployment is automated with Github Actions in a general monorepo deployment pipeline.
 
